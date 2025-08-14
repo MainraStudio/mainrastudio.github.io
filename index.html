@@ -35,7 +35,7 @@
 
         /* Header Styles */
         header {
-            background-color: rgba(26, 26, 46, 0.9);
+            background-color: rgba(26, 26, 46, 0.726);
             backdrop-filter: blur(10px);
             position: fixed;
             width: 100%;
@@ -78,6 +78,10 @@
         }
 
         .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a.active {
             color: var(--accent);
         }
 
@@ -473,15 +477,15 @@
     <!-- Header -->
     <header>
         <div class="container navbar">
-            <a href="#" class="logo">Mainra<span>Games</span></a>
+            <a href="index.html" class="logo">Mainra<span>Games</span></a>
             <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#services">Layanan</a></li>
-                <li><a href="#portfolio">Portofolio</a></li>
-                <li><a href="#about">Tentang</a></li>
-                <li><a href="#contact">Kontak</a></li>
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="services.html">Layanan</a></li>
+                <li><a href="portfolio.html">Portofolio</a></li>
+                <li><a href="about.html">Tentang</a></li>
+                <li><a href="contact.html">Kontak</a></li>
             </ul>
-            <a href="#contact" class="btn">Hubungi Kami</a>
+            <a href="contact.html" class="btn">Hubungi Kami</a>
         </div>
     </header>
 
@@ -491,8 +495,8 @@
             <h1>Membawa Ide Game Anda <span>Menjadi Nyata</span></h1>
             <p>Mainra Games adalah studio pengembangan game profesional yang berfokus pada penciptaan pengalaman bermain game yang luar biasa dan inovatif untuk berbagai platform.</p>
             <div class="hero-btns">
-                <a href="#portfolio" class="btn">Lihat Portofolio</a>
-                <a href="#services" class="btn btn-secondary">Layanan Kami</a>
+                <a href="portfolio.html" class="btn">Lihat Portofolio</a>
+                <a href="services.html" class="btn btn-secondary">Layanan Kami</a>
             </div>
         </div>
     </section>
@@ -684,11 +688,11 @@
                 <div class="footer-logo">Mainra<span>Games</span></div>
                 <p>Mewujudkan ide game Anda menjadi kenyataan</p>
                 <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="https://facebook.com/mainragames" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://twitter.com/mainragames" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://instagram.com/mainragames" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://linkedin.com/company/mainragames" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://github.com/mainragames" target="_blank"><i class="fab fa-github"></i></a>
                 </div>
             </div>
             <div class="copyright">
@@ -698,13 +702,19 @@
     </footer>
 
     <script>
-        // Smooth scrolling for navigation links
+        // Smooth scrolling for navigation links (only for same-page anchors)
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                const href = this.getAttribute('href');
+                if (href !== '#') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                }
             });
         });
 
@@ -725,8 +735,8 @@
         if (contactForm) {
             contactForm.addEventListener('submit', function(e) {
                 e.preventDefault();
-                alert('Terima kasih! Pesan Anda telah terkirim. Kami akan segera menghubungi Anda.');
-                this.reset();
+                // Redirect to contact page for better form handling
+                window.location.href = 'contact.html';
             });
         }
     </script>

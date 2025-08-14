@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio - Mainra Games</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #8a2be2;
+            --secondary: #ff6b6b;
+            --dark: #1a1a2e;
+            --light: #f8f9fa;
+            --accent: #4cc9f0;
+        }
+
+        body {
+            background-color: var(--dark);
+            color: var(--light);
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: rgba(26, 26, 46, 0.9);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a.active {
+            color: var(--accent);
+        }
+
+        .btn {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(138, 43, 226, 0.3);
+        }
+
+        /* Page Header */
+        .page-header {
+            padding: 120px 0 60px;
+            background: linear-gradient(135deg, rgba(26, 26, 46, 0.9) 0%, rgba(42, 42, 72, 0.8) 100%);
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            color: #ccc;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Filter Section */
+        .filter-section {
+            padding: 3rem 0;
+            background-color: #16213e;
+            text-align: center;
+        }
+
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .filter-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--light);
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--accent);
+            color: var(--dark);
+            border-color: var(--accent);
+        }
+
+        /* Portfolio Grid */
+        .portfolio {
+            padding: 4rem 0;
+            background-color: var(--dark);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .portfolio-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            border-color: var(--accent);
+        }
+
+        .portfolio-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .portfolio-item:hover .portfolio-img {
+            transform: scale(1.1);
+        }
+
+        .portfolio-content {
+            padding: 1.5rem;
+        }
+
+        .portfolio-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .portfolio-content p {
+            color: #ccc;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .portfolio-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+
+        .tag {
+            background: rgba(76, 201, 240, 0.2);
+            color: var(--accent);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            border: 1px solid rgba(76, 201, 240, 0.3);
+        }
+
+        .portfolio-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .stat {
+            text-align: center;
+            padding: 0.8rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+        }
+
+        .stat-value {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--accent);
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: #aaa;
+        }
+
+        .portfolio-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--accent);
+            color: var(--accent);
+            flex: 1;
+        }
+
+        .btn-outline:hover {
+            background: var(--accent);
+            color: var(--dark);
+        }
+
+        /* Featured Project */
+        .featured-project {
+            padding: 4rem 0;
+            background-color: #16213e;
+        }
+
+        .featured-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .featured-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+
+        .featured-text p {
+            color: #ccc;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .featured-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .featured-features li {
+            padding: 0.5rem 0;
+            color: #ccc;
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .featured-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .featured-image {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .featured-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            padding: 4rem 0;
+            background-color: var(--dark);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .stat-item h3 {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-item p {
+            color: #ccc;
+            font-size: 1.1rem;
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .cta p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta .btn {
+            background: white;
+            color: var(--primary);
+            font-size: 1.1rem;
+            padding: 1rem 2rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #0f172a;
+            padding: 3rem 0 1.5rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            margin-bottom: 2rem;
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--light);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--accent);
+            color: var(--dark);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            color: #777;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .featured-content {
+                grid-template-columns: 1fr;
+            }
+
+            .filter-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .portfolio-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container navbar">
+            <a href="index.html" class="logo">Mainra<span>Games</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Layanan</a></li>
+                <li><a href="portfolio.html" class="active">Portofolio</a></li>
+                <li><a href="about.html">Tentang</a></li>
+                <li><a href="contact.html">Kontak</a></li>
+            </ul>
+            <a href="contact.html" class="btn">Hubungi Kami</a>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Portofolio Kami</h1>
+            <p>Berikut adalah beberapa proyek game yang telah kami kembangkan dan banggakan</p>
+        </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="filter-section">
+        <div class="container">
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">Semua</button>
+                <button class="filter-btn" data-filter="mobile">Mobile</button>
+                <button class="filter-btn" data-filter="pc">PC</button>
+                <button class="filter-btn" data-filter="vr">VR/AR</button>
+                <button class="filter-btn" data-filter="indie">Indie</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Grid -->
+    <section class="portfolio">
+        <div class="container">
+            <div class="portfolio-grid">
+                <div class="portfolio-item" data-category="mobile indie">
+                    <img src="https://placehold.co/600x400/8a2be2/ffffff?text=Adventure+Quest" alt="Adventure Quest" class="portfolio-img">
+                    <div class="portfolio-content">
+                        <h3>Adventure Quest</h3>
+                        <p>Game petualangan 2D dengan mekanika unik dan cerita yang menarik. Pemain akan menjelajahi dunia fantasi yang penuh misteri.</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">2D</span>
+                            <span class="tag">Adventure</span>
+                            <span class="tag">RPG</span>
+                            <span class="tag">Mobile</span>
+                        </div>
+                        <div class="portfolio-stats">
+                            <div class="stat">
+                                <div class="stat-value">4.8</div>
+                                <div class="stat-label">Rating</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">50K+</div>
+                                <div class="stat-label">Downloads</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">2023</div>
+                                <div class="stat-label">Released</div>
+                            </div>
+                        </div>
+                        <div class="portfolio-actions">
+                            <a href="#" class="btn btn-outline">Lihat Detail</a>
+                            <a href="#" class="btn">Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item" data-category="pc indie">
+                    <img src="https://placehold.co/600x400/ff6b6b/ffffff?text=Space+Defender" alt="Space Defender" class="portfolio-img">
+                    <div class="portfolio-content">
+                        <h3>Space Defender</h3>
+                        <p>Game tembak-menembak luar angkasa dengan grafis 3D yang memukau. Bertahan dari serangan alien dan upgrade kapal Anda.</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">3D</span>
+                            <span class="tag">Shooter</span>
+                            <span class="tag">Action</span>
+                            <span class="tag">PC</span>
+                        </div>
+                        <div class="portfolio-stats">
+                            <div class="stat">
+                                <div class="stat-value">4.6</div>
+                                <div class="stat-label">Rating</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">25K+</div>
+                                <div class="stat-label">Downloads</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">2023</div>
+                                <div class="stat-label">Released</div>
+                            </div>
+                        </div>
+                        <div class="portfolio-actions">
+                            <a href="#" class="btn btn-outline">Lihat Detail</a>
+                            <a href="#" class="btn">Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item" data-category="vr pc">
+                    <img src="https://placehold.co/600x400/4cc9f0/ffffff?text=Mystic+Worlds" alt="Mystic Worlds" class="portfolio-img">
+                    <div class="portfolio-content">
+                        <h3>Mystic Worlds VR</h3>
+                        <p>Game RPG realitas virtual dengan dunia fantasi yang luas. Rasakan sensasi berada di dalam game dengan teknologi VR.</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">VR</span>
+                            <span class="tag">3D</span>
+                            <span class="tag">RPG</span>
+                            <span class="tag">Fantasy</span>
+                        </div>
+                        <div class="portfolio-stats">
+                            <div class="stat">
+                                <div class="stat-value">4.9</div>
+                                <div class="stat-label">Rating</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">10K+</div>
+                                <div class="stat-label">Downloads</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">2023</div>
+                                <div class="stat-label">Released</div>
+                            </div>
+                        </div>
+                        <div class="portfolio-actions">
+                            <a href="#" class="btn btn-outline">Lihat Detail</a>
+                            <a href="#" class="btn">Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item" data-category="mobile">
+                    <img src="https://placehold.co/600x400/ff8c00/ffffff?text=Puzzle+Master" alt="Puzzle Master" class="portfolio-img">
+                    <div class="portfolio-content">
+                        <h3>Puzzle Master</h3>
+                        <p>Game puzzle yang menantang dengan ratusan level yang semakin sulit. Cocok untuk semua umur dan skill level.</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">2D</span>
+                            <span class="tag">Puzzle</span>
+                            <span class="tag">Casual</span>
+                            <span class="tag">Mobile</span>
+                        </div>
+                        <div class="portfolio-stats">
+                            <div class="stat">
+                                <div class="stat-value">4.7</div>
+                                <div class="stat-label">Rating</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">100K+</div>
+                                <div class="stat-label">Downloads</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">2022</div>
+                                <div class="stat-label">Released</div>
+                            </div>
+                        </div>
+                        <div class="portfolio-actions">
+                            <a href="#" class="btn btn-outline">Lihat Detail</a>
+                            <a href="#" class="btn">Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item" data-category="pc">
+                    <img src="https://placehold.co/600x400/9c27b0/ffffff?text=Racing+Legends" alt="Racing Legends" class="portfolio-img">
+                    <div class="portfolio-content">
+                        <h3>Racing Legends</h3>
+                        <p>Game balapan dengan grafis realistis dan fisika yang akurat. Pilih dari berbagai mobil dan trek yang menantang.</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">3D</span>
+                            <span class="tag">Racing</span>
+                            <span class="tag">Sports</span>
+                            <span class="tag">PC</span>
+                        </div>
+                        <div class="portfolio-stats">
+                            <div class="stat">
+                                <div class="stat-value">4.5</div>
+                                <div class="stat-label">Rating</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">75K+</div>
+                                <div class="stat-label">Downloads</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">2022</div>
+                                <div class="stat-label">Released</div>
+                            </div>
+                        </div>
+                        <div class="portfolio-actions">
+                            <a href="#" class="btn btn-outline">Lihat Detail</a>
+                            <a href="#" class="btn">Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item" data-category="mobile indie">
+                    <img src="https://placehold.co/600x400/00bcd4/ffffff?text=Zen+Garden" alt="Zen Garden" class="portfolio-img">
+                    <div class="portfolio-content">
+                        <h3>Zen Garden</h3>
+                        <p>Game relaksasi dengan tema zen garden. Buat taman yang indah dan nikmati ketenangan dalam game ini.</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">2D</span>
+                            <span class="tag">Relaxation</span>
+                            <span class="tag">Simulation</span>
+                            <span class="tag">Mobile</span>
+                        </div>
+                        <div class="portfolio-stats">
+                            <div class="stat">
+                                <div class="stat-value">4.8</div>
+                                <div class="stat-label">Rating</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">30K+</div>
+                                <div class="stat-label">Downloads</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">2023</div>
+                                <div class="stat-label">Released</div>
+                            </div>
+                        </div>
+                        <div class="portfolio-actions">
+                            <a href="#" class="btn btn-outline">Lihat Detail</a>
+                            <a href="#" class="btn">Demo</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Project -->
+    <section class="featured-project">
+        <div class="container">
+            <div class="featured-content">
+                <div class="featured-text">
+                    <h2>Proyek Unggulan: Adventure Quest</h2>
+                    <p>Adventure Quest adalah game petualangan 2D yang telah mendapatkan penghargaan "Best Mobile Game 2023" dari Indonesian Game Awards. Game ini menampilkan mekanika gameplay yang inovatif dan cerita yang mendalam.</p>
+                    <ul class="featured-features">
+                        <li>100+ level yang menantang</li>
+                        <li>5 karakter unik dengan skill berbeda</li>
+                        <li>Dunia terbuka dengan 8 area berbeda</li>
+                        <li>Sistem crafting dan upgrade</li>
+                        <li>Multiplayer co-op mode</li>
+                        <li>Cloud save dan cross-platform</li>
+                    </ul>
+                    <a href="#" class="btn">Lihat Proyek Lengkap</a>
+                </div>
+                <div class="featured-image">
+                    <img src="https://placehold.co/600x400/8a2be2/ffffff?text=Adventure+Quest+Featured" alt="Adventure Quest Featured">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>50+</h3>
+                    <p>Game Dikembangkan</p>
+                </div>
+                <div class="stat-item">
+                    <h3>2M+</h3>
+                    <p>Total Downloads</p>
+                </div>
+                <div class="stat-item">
+                    <h3>4.7</h3>
+                    <p>Rating Rata-rata</p>
+                </div>
+                <div class="stat-item">
+                    <h3>15+</h3>
+                    <p>Penghargaan</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Ingin Game Seperti Ini?</h2>
+            <p>Konsultasi dengan tim kami untuk mewujudkan ide game Anda menjadi kenyataan</p>
+            <a href="contact.html" class="btn">Mulai Proyek</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">Mainra<span>Games</span></div>
+                <p>Mewujudkan ide game Anda menjadi kenyataan</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Mainra Games. Hak Cipta Dilindungi.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Filter functionality
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+
+                const filter = button.getAttribute('data-filter');
+
+                portfolioItems.forEach(item => {
+                    const category = item.getAttribute('data-category');
+                    if (filter === 'all' || category.includes(filter)) {
+                        item.style.display = 'block';
+                        item.style.animation = 'fadeIn 0.5s ease-in';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.backgroundColor = 'rgba(26, 26, 46, 0.95)';
+                header.style.padding = '0.5rem 0';
+            } else {
+                header.style.backgroundColor = 'rgba(26, 26, 46, 0.9)';
+                header.style.padding = '1rem 0';
+            }
+        });
+
+        // Add fadeIn animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(20px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
