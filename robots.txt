@@ -12,7 +12,7 @@ Allow: /*.svg
 Allow: /*.ico
 
 # Sitemap location
-Sitemap: https://yourdomain.com/sitemap.xml
+Sitemap: https://mainragames.com/sitemap.xml
 
 # Crawl-delay for all bots
 Crawl-delay: 10
