@@ -4,7 +4,6 @@ User-agent: *
 Allow: /
 
 Sitemap: https://mainragames.com/sitemap.xml
-Crawl-delay: 10
 
 Disallow: /admin/
 Disallow: /private/
