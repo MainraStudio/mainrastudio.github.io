@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
+    <title>Mainra Learning Community</title>
+    <link rel="icon" type="image/x-icon" href="Assets/Logo Mainra Warna bg terang.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #1a1a2e;
+            color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 90%;
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 3rem 0;
+        }
+        .learning-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .learning-header h1 {
+            color: #4cc9f0;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .learning-header p {
+            color: #ccc;
+            font-size: 1.2rem;
+        }
+        .community-section {
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .community-section h2 {
+            color: #8a2be2;
+            margin-bottom: 1rem;
+        }
+        .community-section p {
+            color: #bbb;
+            margin-bottom: 2rem;
+        }
+        .community-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+        .community-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: #222244;
+            border-radius: 10px;
+            padding: 1.5rem 2rem;
+            text-decoration: none;
+            color: #fff;
+            transition: background 0.3s, transform 0.3s;
+            box-shadow: 0 4px 12px rgba(76,201,240,0.1);
+        }
+        .community-link:hover {
+            background: #4cc9f0;
+            color: #1a1a2e;
+            transform: translateY(-5px);
+        }
+        .community-link i {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        @media (max-width: 600px) {
+            .community-links {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            .container {
+                padding: 1.5rem 0;
+            }
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 2rem;
+            color: #4cc9f0;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .back-link:hover {
+            color: #8a2be2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="learning-header">
+            <h1>Mainra Learning Community</h1>
+            <p>Bergabunglah dengan komunitas Mainra di Discord dan WhatsApp untuk belajar, berbagi, dan berkembang bersama para pengembang game Indonesia!</p>
+        </div>
+        <div class="community-section">
+            <h2>Gabung Komunitas Kami</h2>
+            <p>Kami memiliki komunitas aktif di Discord dan WhatsApp. Dapatkan akses ke diskusi, workshop, dan update terbaru seputar pengembangan game bersama Mainra.</p>
+            <div class="community-links">
+                <a class="community-link" href="https://discord.gg/your-discord-link" target="_blank">
+                    <i class="fab fa-discord"></i>
+                    <span>Join Discord</span>
+                </a>
+                <a class="community-link" href="https://chat.whatsapp.com/your-whatsapp-link" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>Join WhatsApp</span>
+                </a>
+            </div>
+        </div>
+        <a href="index.html" class="back-link">&larr; Kembali ke Beranda</a>
+    </div>
+</body>
+</html>
+
