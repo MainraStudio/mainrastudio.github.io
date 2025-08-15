@@ -1,0 +1,32 @@
+User-agent: *
+Allow: /
+Allow: /sitemap.xml
+
+# Allow all images, scripts, styles
+Allow: /*.js
+Allow: /*.css
+Allow: /*.png
+Allow: /*.jpg
+Allow: /*.gif
+Allow: /*.svg
+Allow: /*.ico
+
+# Sitemap location
+Sitemap: https://yourdomain.com/sitemap.xml
+
+# Crawl-delay for all bots
+Crawl-delay: 10
+
+# Disallow admin and private areas
+Disallow: /admin/
+Disallow: /private/
+Disallow: /cgi-bin/
+Disallow: /tmp/
+Disallow: /*.sql
+Disallow: /*.sql.gz
+Disallow: /wp-admin/
+Disallow: /wp-includes/
+Disallow: /search?
+Disallow: *?replytocom
+Disallow: */feed/
+Disallow: */trackback/
