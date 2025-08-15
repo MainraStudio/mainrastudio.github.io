@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
     <title>Mainra Games - Jasa Pembuatan Game Berkualitas</title>
+    <link rel="icon" type="image/x-icon" href="Assets/Logo Mainra Warna bg terang.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -80,6 +81,15 @@
             font-weight: 700;
             color: var(--accent);
             text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+            object-fit: contain;
+            max-width: 200px;
         }
 
         .logo span {
@@ -641,6 +651,11 @@
                 display: none;
             }
 
+            .logo img {
+                height: 45px;
+                max-width: 180px;
+            }
+
             .hero-btns {
                 flex-direction: column;
                 gap: 1rem;
@@ -740,6 +755,11 @@
             
             .container {
                 width: 95%;
+            }
+
+            .logo img {
+                height: 40px;
+                max-width: 150px;
             }
             
             .service-card,
@@ -878,7 +898,9 @@
     <!-- Header -->
     <header>
         <div class="container navbar">
-            <a href="index.html" class="logo">Mainra<span>Games</span></a>
+            <a href="index.html" class="logo">
+                <img src="Assets/Mainra%20Terang.png" alt="Mainra Games">
+            </a>
             <ul class="nav-links">
                 <li><a href="index.html" class="active">Home</a></li>
                 <li><a href="games.html">Games</a></li>
@@ -897,7 +919,9 @@
         <div class="mobile-nav">
             <div class="mobile-nav-content">
                 <div class="mobile-nav-header">
-                    <a href="index.html" class="logo">Mainra<span>Games</span></a>
+                    <a href="index.html" class="logo">
+                        <img src="Assets/Logo Mainra Warna bg terang.jpg" alt="Mainra Games">
+                    </a>
                     <button class="close-nav">
                         <i class="fas fa-times"></i>
                     </button>
