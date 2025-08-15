@@ -81,6 +81,15 @@
             font-weight: 700;
             color: var(--accent);
             text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+            object-fit: contain;
+            max-width: 200px;
         }
 
         .logo span {
@@ -617,6 +626,11 @@
                 display: none;
             }
 
+            .logo img {
+                height: 45px;
+                max-width: 180px;
+            }
+
             .services-grid {
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
@@ -776,7 +790,9 @@
     <!-- Header -->
     <header>
         <div class="container navbar">
-            <a href="index.html" class="logo">Mainra<span>Games</span></a>
+            <a href="index.html" class="logo">
+                <img src="Assets/Mainra%20Terang.png" alt="Mainra Games">
+            </a>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="index.html#games">Games</a></li>
@@ -795,7 +811,9 @@
         <div class="mobile-nav">
             <div class="mobile-nav-content">
                 <div class="mobile-nav-header">
-                    <a href="index.html" class="logo">Mainra<span>Games</span></a>
+                    <a href="index.html" class="logo">
+                        <img src="Assets/Mainra%20Terang.png" alt="Mainra Games">
+                    </a>
                     <button class="close-nav">
                         <i class="fas fa-times"></i>
                     </button>
