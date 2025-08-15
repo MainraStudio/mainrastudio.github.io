@@ -1114,22 +1114,19 @@
                     </div>
                 </div>
                 <div class="contact-form">
-                    <form action="https://formspree.io/f/xdovqdeb" method="POST">
+                    <form id="contactForm">
                         <div class="form-group">
-                            <input type="text" name="name" placeholder="Nama Anda" required>
+                            <input type="text" id="name" placeholder="Nama Anda" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" name="email" placeholder="Email Anda" required>
+                            <input type="email" id="email" placeholder="Email Anda" required>
                         </div>
                         <div class="form-group">
-                            <input type="text" name="subject" placeholder="Subjek" required>
+                            <input type="text" id="subject" placeholder="Subjek" required>
                         </div>
                         <div class="form-group">
-                            <textarea name="message" placeholder="Pesan Anda" required></textarea>
+                            <textarea id="message" placeholder="Pesan Anda" required></textarea>
                         </div>
-                        <input type="hidden" name="_next" value="index.html">
-                        <input type="hidden" name="_subject" value="Pesan Baru dari Website Mainra Games">
-                        <input type="hidden" name="_cc" value="mainragames@gmail.com">
                         <button type="submit" class="btn">Kirim Pesan</button>
                     </form>
                 </div>
@@ -1237,22 +1234,34 @@
             }
         });
 
-        // Form submission
-        const contactForm = document.querySelector('.contact-form form');
+        // Form submission with mailto
+        const contactForm = document.getElementById('contactForm');
         if (contactForm) {
             contactForm.addEventListener('submit', function(e) {
-                // Let the form submit naturally to Formspree
-                // Show loading state
-                const submitBtn = contactForm.querySelector('button[type="submit"]');
-                const originalText = submitBtn.textContent;
-                submitBtn.textContent = 'Mengirim...';
-                submitBtn.disabled = true;
+                e.preventDefault();
 
-                // Re-enable button after a delay (in case of error)
-                setTimeout(() => {
-                    submitBtn.textContent = originalText;
-                    submitBtn.disabled = false;
-                }, 5000);
+                // Get form data
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const subject = document.getElementById('subject').value;
+                const message = document.getElementById('message').value;
+
+                // Create email body
+                const emailBody = `Nama: ${name}%0D%0A` +
+                                 `Email: ${email}%0D%0A%0D%0A` +
+                                 `Pesan:%0D%0A${message}`;
+
+                // Create mailto link
+                const mailtoLink = `mailto:mainragames@gmail.com?subject=${encodeURIComponent(subject)}&body=${emailBody}`;
+
+                // Open email client
+                window.location.href = mailtoLink;
+
+                // Show success message
+                alert('Email client Anda akan terbuka. Silakan kirim email dari aplikasi email Anda.');
+
+                // Reset form
+                contactForm.reset();
             });
         }
     </script>
