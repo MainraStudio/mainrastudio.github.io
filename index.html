@@ -1015,26 +1015,10 @@
                 <p>Berikut adalah beberapa game yang telah kami kembangkan</p>
             </div>
             <div class="games-grid">
-                <div class="game-item">
-                    <img src="https://placehold.co/600x400/8a2be2/ffffff?text=Adventure+Quest" alt="Adventure Quest" class="game-img">
-                    <div class="game-overlay">
-                        <h3>Adventure Quest</h3>
-                        <p>Game petualangan 2D dengan mekanika unik</p>
-                    </div>
-                </div>
-                <div class="game-item">
-                    <img src="https://placehold.co/600x400/ff6b6b/ffffff?text=Space+Defender" alt="Space Defender" class="game-img">
-                    <div class="game-overlay">
-                        <h3>Space Defender</h3>
-                        <p>Game tembak-menembak luar angkasa</p>
-                    </div>
-                </div>
-                <div class="game-item">
-                    <img src="https://placehold.co/600x400/4cc9f0/ffffff?text=Mystic+Worlds" alt="Mystic Worlds" class="game-img">
-                    <div class="game-overlay">
-                        <h3>Mystic Worlds</h3>
-                        <p>Game RPG dengan dunia fantasi yang luas</p>
-                    </div>
+                <!-- Games will be loaded dynamically by games-loader.js -->
+                <div style="grid-column: 1/-1; text-align: center; padding: 3rem; color: #999;">
+                    <i class="fas fa-spinner fa-spin" style="font-size: 2rem; margin-bottom: 1rem;"></i>
+                    <p>Memuat games...</p>
                 </div>
             </div>
             <div style="text-align: center; margin-top: 2rem;">
@@ -1130,7 +1114,92 @@
         </div>
     </footer>
 
+    <script src="js/games-loader.js"></script>
     <script>
+        // Ensure games loader is initialized and add robust fallback to render from games-data.json
+        (function () {
+            async function fetchJson() {
+                const res = await fetch('games-data.json?' + Date.now());
+                if (!res.ok) throw new Error('Failed to fetch games-data.json: ' + res.status);
+                return res.json();
+            }
+
+            function homepageHasRendered() {
+                return document.querySelectorAll('#games .games-grid .game-item').length > 0;
+            }
+
+            function emptyStateHtml() {
+                return `
+                    <div style="grid-column: 1/-1; text-align: center; padding: 3rem; color: #999;">
+                        <i class="fas fa-gamepad" style="font-size: 4rem; margin-bottom: 1rem;"></i>
+                        <h3>Belum Ada Game Featured</h3>
+                        <p>Game akan muncul setelah ditandai sebagai featured</p>
+                    </div>
+                `;
+            }
+
+            async function renderFeaturedFallback() {
+                try {
+                    const data = await fetchJson();
+                    const grid = document.querySelector('#games .games-grid');
+                    if (!grid) return;
+
+                    const featured = (data.games || []).filter(g => g.featured === true).slice(0, 3);
+                    if (featured.length === 0) {
+                        grid.innerHTML = emptyStateHtml();
+                        return;
+                    }
+
+                    grid.innerHTML = featured.map(g => `
+                        <div class="game-item">
+                            <img src="${g.image}" 
+                                 alt="${(g.title || '').replace(/[&<>"']/g, s=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#039;'})[s])}" 
+                                 class="game-img"
+                                 onerror="this.src='https://placehold.co/600x400/333/fff?text=No+Image'"
+                                 loading="lazy">
+                            <div class="game-overlay">
+                                <h3>${(g.title || '').replace(/[&<>"']/g, s=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#039;'})[s])}</h3>
+                                <p>${((g.description || '').length > 100 ? g.description.substring(0, 100) + '...' : (g.description || '')).replace(/[&<>"']/g, s=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#039;'})[s])}</p>
+                                ${g.playLink && g.playLink !== '#' ? 
+                                    `<a href="${g.playLink}" target="_blank" class="btn btn-small" style="margin-top: 1rem;">
+                                        <i class="fas fa-play"></i> Main Sekarang
+                                    </a>` : 
+                                    `<span class="btn btn-small" style="margin-top: 1rem; opacity: 0.6;">
+                                        <i class="fas fa-clock"></i> Segera Hadir
+                                    </span>`
+                                }
+                            </div>
+                        </div>
+                    `).join('');
+                } catch (e) {
+                    console.error('Fallback render (index) failed:', e);
+                }
+            }
+
+            try {
+                if (!window.gamesLoader || typeof window.gamesLoader.renderGames !== 'function') {
+                    window.gamesLoader = new GamesLoader();
+                } else {
+                    // Re-render to replace loading placeholder if needed
+                    requestAnimationFrame(function () {
+                        window.gamesLoader.renderGames && window.gamesLoader.renderGames();
+                    });
+                    setTimeout(function () {
+                        window.gamesLoader.renderGames && window.gamesLoader.renderGames();
+                    }, 300);
+                }
+            } catch (e) {
+                console.error('Failed to initialize GamesLoader:', e);
+            }
+
+            // Fallback if after short delay nothing rendered yet
+            setTimeout(function () {
+                if (!homepageHasRendered()) {
+                    renderFeaturedFallback();
+                }
+            }, 1200);
+        })();
+
         // Hamburger Menu Functionality
         const hamburger = document.querySelector('.hamburger');
         const mobileNav = document.querySelector('.mobile-nav');

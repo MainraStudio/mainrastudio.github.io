@@ -1,0 +1,97 @@
+{
+  "games": [
+    {
+      "id": 1755469795000,
+      "title": "Game Pengenalan Binatang",
+      "description": "This game contains an adventure looking for animals in various habitats, there is a puzzle game mechanism when collecting animals at each stage. The animals that have been obtained can then be viewed via the animal encyclopedia menu, the encyclopedia contains interesting information about animals.",
+      "image": "https://play-lh.googleusercontent.com/RsT5E894y68QTWBKGntX8r_t-XILwtHITWvDG9dXztrHsvtsC-9GYZycdNehkheapQA=w240-h480-rw",
+      "screenshots": [
+        "https://play-lh.googleusercontent.com/u1G7_VXGwCQy9uO69QUxCiaxUURJ4px_zm9Vi6Ol7u3eX9ZAvvgUT25GVsnQfe5qgMs=w2560-h1440-rw",
+        "https://play-lh.googleusercontent.com/3lWrwReBnNKvgWWZ8XmSMfeX5Mwsxj5BIcS3F8eBOjdgnTXQVMsFS7wrGqOC3NhLtmU=w2560-h1440-rw",
+        "https://play-lh.googleusercontent.com/zFH0JEwRiF5rJBFWQaiGAgfiR7bJhiVAhxJuAH6IepmA0W5UwD63Bhdz62exekqary_l=w2560-h1440-rw",
+        "https://play-lh.googleusercontent.com/sQOepvsZpNUUJaPpBTlaXu0rux_U6wuHofNmr7Dg6Jfw7Zl-MvacmwFdMnXQGlKv8qE=w2560-h1440-rw",
+        "https://play-lh.googleusercontent.com/iq2GQqy52C5H7bbBpUuJDtd_k7wgEMqUMFlAeV7eexilZGpvJkv6UBa2btNe3fnOlTFN=w2560-h1440-rw",
+        "https://play-lh.googleusercontent.com/bXHDLZQo1ovtAR7CLgxR_pmvQJKIqmY8pN9iH9omwUqczKS6dvl3LokmLpKWgcPNiwk=w2560-h1440-rw"
+      ],
+      "playLink": "https://play.google.com/store/apps/details?id=com.Mainra.GamePengenalanBinatang",
+      "category": "Game",
+      "status": "Released",
+      "releaseDate": "2025-08-17",
+      "platform": "Mobile",
+      "rating": "4.5",
+      "featured": true,
+      "highlight": false,
+      "stats": {
+        "gameplay": "50+",
+        "characters": "25+",
+        "worlds": "5+",
+        "rating": "4.5"
+      }
+    },
+    {
+      "id": 1755469897385,
+      "title": "Pop It 3D Fidget: Multiplayer",
+      "description": "Experience Pop It in a new format with Pop It 3D Fidget: A Two-Player Game with AI! You don't have to look for opponents, the intelligent AI is ready to challenge you in every level. Enjoy the relaxing bubble burst gameplay in 3D graphics, while practicing strategies against the AI that is always ready to provide challenges.",
+      "image": "https://play-lh.googleusercontent.com/CMPpi2rAB2fyVLyGdwueoTtU1enGYU-2Xl1xqIF7NIEH6zYg3pI6yfGu1Qc-agchHR-7=w240-h480-rw",
+      "screenshots": [
+        "https://play-lh.googleusercontent.com/Kbwl2jRwhSxy2HObuyiyn8Xn1xpVYAflpI0WFwtYI0C6GnlotJ6CXZeasi9THZxCVLkA=w2560-h1440-rw",
+        "https://play-lh.googleusercontent.com/UnzF5G3KrtrwxktveCcW5_Grm6NVzCfVSA41vjyB2aj0B_2wtWFz4koqY9fUmq36LA0=w2560-h1440-rw",
+        "https://play-lh.googleusercontent.com/GlJPl_WwtXXdMO088Da6qQlcnhNXs-UGyrdPqI7jvD8njVu1ZZjqPAVOwh2uRbv68kg=w2560-h1440-rw",
+        "https://play-lh.googleusercontent.com/brZFh2GAFhrrSz3nu3XeXW7lMTvt2QSsgEvAQBykogFMkt6OKxd85awN8uM-VEcqyjpG=w2560-h1440-rw"
+      ],
+      "playLink": "https://play.google.com/store/apps/details?id=com.MainraGames.Popit3DFidget",
+      "category": "Game",
+      "status": "Released",
+      "releaseDate": "2025-08-17",
+      "platform": "Mobile",
+      "rating": "4.5",
+      "featured": true,
+      "highlight": false,
+      "stats": {
+        "gameplay": "50+",
+        "characters": "25+",
+        "worlds": "5+",
+        "rating": "4.5"
+      }
+    },
+    {
+      "id": 1755470014160,
+      "title": "Squishy Jelly Merge",
+      "description": "Welcome to Jelly Merge, the ultimate puzzle game that will test your merging skills and challenge your brain! In this fun and addictive game, your goal is to merge jellies of different colors until only three primary colors remain.",
+      "image": "https://play-lh.googleusercontent.com/7cC51UXJa7t84MVuDI1baPfSJp99i63jBJxS9B4ETVau1iMYM0QZbugTyJK9u99acg=w240-h480-rw",
+      "screenshots": [
+        "https://play-lh.googleusercontent.com/r0Y1wvi4pJPbgALC-lY95lpZsBipNn1jNLpw4QnUYAGaD5aOnFPWZLbNhLGBAtcisGY=w2560-h1440-rw",
+        "https://play-lh.googleusercontent.com/tBO9JQDJ8OhccC7GVwX1T0sK02d5YkVcuKH4p5m2_BL-ixoBfE5TIYRIo6w7PQ0Q_zex=w2560-h1440-rw",
+        "https://play-lh.googleusercontent.com/OXPkaLB-bYU-Qxx7Rtxqv3U5pz-RE8u1dmndjip4M1tW4hIylXQ80m7-5CI9tMz5R1Z5=w2560-h1440-rw",
+        "https://play-lh.googleusercontent.com/l6DQS9IXUHuz2MMul0yhNSRFPxrs-nuv2veuODALotQO0kTwyOGtpwNsXqAYAqe-aNY=w2560-h1440-rw"
+      ],
+      "playLink": "https://play.google.com/store/apps/details?id=com.MainraGames.SquishyJellyMerge",
+      "category": "Game",
+      "status": "Released",
+      "releaseDate": "2025-08-17",
+      "platform": "Mobile",
+      "rating": "4.5",
+      "featured": true,
+      "highlight": false,
+      "stats": {
+        "gameplay": "50+",
+        "characters": "25+",
+        "worlds": "5+",
+        "rating": "4.5"
+      }
+    }
+  ],
+  "highlight": {
+    "gameId": 1755469795000,
+    "customTitle": "",
+    "customDescription": "",
+    "youtubeUrl": "",
+    "stats": {
+      "gameplay": "50+",
+      "characters": "25+",
+      "worlds": "5+"
+    },
+    "active": true,
+    "lastUpdated": "2025-08-17T22:33:54.232Z"
+  }
+}
