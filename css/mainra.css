@@ -146,18 +146,20 @@ header{
 /* Index: games grid (teaser) */
 .games{padding:7rem 0;background:linear-gradient(135deg,rgba(9,7,28,.9) 0%, rgba(15,12,41,.9) 100%)}
 .games-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2.5rem}
+#games .games-grid{margin-bottom:2.5rem}
 .game-item{border-radius:20px;overflow:hidden;position:relative;height:320px;box-shadow:0 15px 35px rgba(0,0,0,.4);transition:all .4s ease;border:1px solid var(--border-color)}
 .game-item:hover{transform:translateY(-10px);box-shadow:0 25px 50px rgba(0,0,0,.5);border-color:var(--accent)}
-.game-img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
-.game-item:hover .game-img{transform:scale(1.1)}
+.game-img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease, filter .6s ease}
+.game-item:hover .game-img{transform:scale(1.06);filter:brightness(.6) saturate(1.05)}
 .game-overlay{
   position:absolute;top:0;left:0;width:100%;height:100%;
-  background:linear-gradient(to top, rgba(106,17,203,.9), transparent 60%);
-  display:flex;flex-direction:column;justify-content:flex-end;padding:2rem;opacity:0;transition:opacity .4s ease
+  background:linear-gradient(to top, rgba(0,0,0,.85) 0%, rgba(0,0,0,.6) 40%, rgba(0,0,0,.25) 100%);
+  display:flex;flex-direction:column;justify-content:flex-end;padding:2rem;opacity:0;transition:opacity .4s ease;
+  backdrop-filter:blur(2px)
 }
 .game-item:hover .game-overlay{opacity:1}
-.game-overlay h3{font-size:1.7rem;margin-bottom:.7rem;color:#fff}
-.game-overlay p{color:#e2e8f0;margin-bottom:1.2rem;font-size:.95rem}
+.game-overlay h3{font-size:1.7rem;margin-bottom:.7rem;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.8)}
+.game-overlay p{color:#f1f5f9;margin-bottom:1.2rem;font-size:.95rem;text-shadow:0 1px 6px rgba(0,0,0,.75)}
 
 /* Index: about */
 .about{padding:7rem 0;background:linear-gradient(135deg,rgba(15,12,41,.9) 0%, rgba(9,7,28,.9) 100%);position:relative;overflow:hidden}
