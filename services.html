@@ -20,6 +20,7 @@
             --dark: #1a1a2e;
             --light: #f8f9fa;
             --accent: #4cc9f0;
+            --success: #4ade80;
         }
 
         body {
@@ -31,13 +32,13 @@
             padding-right: max(env(safe-area-inset-right), 0px);
             padding-bottom: max(env(safe-area-inset-bottom), 0px);
         }
-        
+
         /* Smooth scrolling for all devices */
         html {
             scroll-behavior: smooth;
             -webkit-overflow-scrolling: touch;
         }
-        
+
         /* Better touch targets for mobile */
         .btn, .nav-links a {
             min-height: 44px;
@@ -136,6 +137,17 @@
         .btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 10px 20px rgba(138, 43, 226, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid var(--accent);
+            color: var(--accent);
+        }
+
+        .btn-secondary:hover {
+            background: var(--accent);
+            color: var(--dark);
         }
 
         /* Hamburger Menu */
@@ -443,6 +455,14 @@
             background-color: #16213e;
         }
 
+        .section-subtitle {
+            text-align: center;
+            color: #aaa;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            line-height: 1.6;
+        }
+
         .pricing-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -458,11 +478,13 @@
             transition: transform 0.3s ease;
             border: 1px solid rgba(255, 255, 255, 0.1);
             position: relative;
+            overflow: hidden;
         }
 
         .pricing-card.featured {
             border-color: var(--accent);
             transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
 
         .pricing-card:hover {
@@ -472,6 +494,19 @@
 
         .pricing-card.featured:hover {
             transform: scale(1.05) translateY(-10px);
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: 20px;
+            right: -30px;
+            background: var(--success);
+            color: var(--dark);
+            padding: 0.3rem 2rem;
+            font-size: 0.8rem;
+            font-weight: bold;
+            transform: rotate(45deg);
+            width: 150px;
         }
 
         .pricing-header h3 {
@@ -495,16 +530,46 @@
         .pricing-features {
             list-style: none;
             margin: 2rem 0;
+            text-align: left;
         }
 
         .pricing-features li {
-            padding: 0.5rem 0;
+            padding: 0.7rem 0;
             color: #ccc;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
         }
 
         .pricing-features li:last-child {
             border-bottom: none;
+        }
+
+        .pricing-features li i {
+            color: var(--success);
+            margin-right: 10px;
+            width: 20px;
+        }
+
+        .pricing-features li.muted {
+            color: #777;
+        }
+
+        .pricing-features li.muted i {
+            color: #777;
+        }
+
+        .pricing-card.custom {
+            background: linear-gradient(135deg, rgba(138, 43, 226, 0.1), rgba(76, 201, 240, 0.1));
+            border: 1px solid var(--primary);
+        }
+
+        .pricing-card.custom .price {
+            font-size: 1.8rem;
+        }
+
+        .pricing-card.custom .pricing-header h3 {
+            color: var(--primary);
         }
 
         /* CTA Section */
@@ -534,6 +599,116 @@
             color: var(--primary);
             font-size: 1.1rem;
             padding: 1rem 2rem;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 6rem 0;
+            background-color: var(--dark);
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .testimonial-content {
+            font-style: italic;
+            color: #ccc;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--accent);
+            margin-right: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: var(--dark);
+        }
+
+        .author-info h4 {
+            color: var(--accent);
+            margin-bottom: 0.2rem;
+        }
+
+        .author-info p {
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        /* FAQ */
+        .faq {
+            padding: 6rem 0;
+            background-color: #16213e;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 3rem auto 0;
+        }
+
+        .faq-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-question h3 {
+            color: var(--accent);
+            font-size: 1.1rem;
+            margin: 0;
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            color: #ccc;
+            line-height: 1.6;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 1.5rem 1.5rem;
+            max-height: 500px;
+        }
+
+        .faq-toggle {
+            color: var(--accent);
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(180deg);
         }
 
         /* Footer */
@@ -591,19 +766,19 @@
             .container {
                 width: 95%;
             }
-            
+
             .page-header h1 {
                 font-size: 2.8rem;
             }
-            
+
             .services-grid {
                 grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             }
-            
+
             .process-grid {
                 grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             }
-            
+
             .pricing-grid {
                 grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             }
@@ -635,26 +810,26 @@
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
             }
-            
+
             .process-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 1.5rem;
             }
-            
+
             .pricing-grid {
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
             }
-            
+
             .service-card {
                 padding: 2rem;
             }
-            
+
             .pricing-card {
                 padding: 2rem;
             }
         }
-        
+
         @media (max-width: 480px) {
             .page-header h1 {
                 font-size: 2rem;
@@ -663,123 +838,127 @@
             .section-title h2 {
                 font-size: 2rem;
             }
-            
+
             .page-header {
                 padding: 100px 0 40px;
             }
-            
+
             .service-card {
                 padding: 1.5rem;
             }
-            
+
             .pricing-card {
                 padding: 1.5rem;
             }
-            
+
             .process-grid {
                 grid-template-columns: 1fr;
             }
-            
+
             .process-step {
                 padding: 1.5rem;
             }
-            
+
             .cta h2 {
                 font-size: 2rem;
             }
+
+            .cta p {
+                font-size: 1rem;
+            }
         }
-        
+
         /* Landscape Mobile */
         @media (max-height: 500px) and (orientation: landscape) {
             .page-header {
                 padding: 80px 0 40px;
             }
-            
+
             .page-header h1 {
                 font-size: 2.2rem;
                 margin-bottom: 0.5rem;
             }
-            
+
             .page-header p {
                 font-size: 1rem;
             }
         }
-        
+
         /* Tablet Portrait */
         @media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
             .page-header h1 {
                 font-size: 3.5rem;
             }
-            
+
             .services-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-            
+
             .process-grid {
                 grid-template-columns: repeat(3, 1fr);
             }
         }
-        
+
         /* Large Desktop */
         @media (min-width: 1400px) {
             .container {
                 max-width: 1400px;
             }
-            
+
             .page-header h1 {
                 font-size: 3.5rem;
             }
-            
+
             .section-title h2 {
                 font-size: 3rem;
             }
-            
+
             .services-grid {
                 grid-template-columns: repeat(3, 1fr);
             }
         }
-        
+
         /* Ultra-wide screens */
         @media (min-width: 1920px) {
             .container {
                 max-width: 1600px;
             }
-            
+
             .page-header h1 {
                 font-size: 4rem;
             }
         }
-        
+
         /* Extra small screens */
         @media (max-width: 360px) {
             .page-header {
                 padding: 80px 0 30px;
             }
-            
+
             .page-header h1 {
                 font-size: 1.8rem;
             }
-            
+
             .page-header p {
                 font-size: 0.9rem;
             }
-            
+
             .service-card {
                 padding: 1.2rem;
             }
-            
+
             .pricing-card {
                 padding: 1.2rem;
             }
-            
+
             .process-step {
                 padding: 1.2rem;
             }
-            
+
             .cta h2 {
                 font-size: 1.8rem;
             }
-            
+
             .cta p {
                 font-size: 1rem;
             }
@@ -787,350 +966,485 @@
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container navbar">
-            <a href="index.html" class="logo">
-                <img src="Assets/LogoMainraGames.png" alt="Mainra Games">
-            </a>
-            <ul class="nav-links">
+<!-- Header -->
+<header>
+    <div class="container navbar">
+        <a href="index.html" class="logo">
+            <img src="Assets/LogoMainraGames.png" alt="Mainra Games">
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#games">Games</a></li>
+            <li><a href="services.html" class="active">Services</a></li>
+            <li><a href="learning.html">Learning</a></li>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+        </ul>
+        <a href="index.html#contact" class="btn">Hubungi Kami</a>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+    <!-- Mobile Navigation Overlay -->
+    <div class="mobile-nav">
+        <div class="mobile-nav-content">
+            <div class="mobile-nav-header">
+                <a href="index.html" class="logo">
+                    <img src="Assets/LogoMainraGames.png" alt="Mainra Games">
+                </a>
+                <button class="close-nav">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <ul class="mobile-nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="index.html#games">Games</a></li>
                 <li><a href="services.html" class="active">Services</a></li>
                 <li><a href="learning.html">Learning</a></li>
                 <li><a href="privacy-policy.html">Privacy Policy</a></li>
             </ul>
-            <a href="index.html#contact" class="btn">Hubungi Kami</a>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
+            <div class="mobile-nav-footer">
+                <a href="index.html#contact" class="btn btn-full">Hubungi Kami</a>
             </div>
         </div>
-        
-        <!-- Mobile Navigation Overlay -->
-        <div class="mobile-nav">
-            <div class="mobile-nav-content">
-                <div class="mobile-nav-header">
-                    <a href="index.html" class="logo">
-                        <img src="Assets/LogoMainraGames.png" alt="Mainra Games">
-                    </a>
-                    <button class="close-nav">
-                        <i class="fas fa-times"></i>
-                    </button>
+    </div>
+</header>
+
+<!-- Page Header -->
+<section class="page-header">
+    <div class="container">
+        <h1>Layanan Pengembangan Game</h1>
+        <p>Solusi pengembangan game profesional untuk semua kebutuhan - dari ide awal hingga peluncuran</p>
+    </div>
+</section>
+
+<!-- Services Section -->
+<section class="services">
+    <div class="container">
+        <div class="section-title">
+            <h2>Layanan Kami</h2>
+            <p>Dari konsep hingga peluncuran, kami siap membantu mewujudkan visi game Anda</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-gamepad"></i>
                 </div>
-                <ul class="mobile-nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="index.html#games">Games</a></li>
-                    <li><a href="services.html" class="active">Services</a></li>
-                    <li><a href="learning.html">Learning</a></li>
-                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                <h3>Pengembangan Game Lengkap</h3>
+                <p>Pengembangan game dari awal hingga akhir, termasuk konsep, desain, pengkodean, testing, dan peluncuran.</p>
+                <ul class="service-features">
+                    <li>Game Design Document (GDD)</li>
+                    <li>Prototyping dan iterasi</li>
+                    <li>Pengembangan fitur lengkap</li>
+                    <li>Testing dan quality assurance</li>
+                    <li>Deployment dan maintenance</li>
                 </ul>
-                <div class="mobile-nav-footer">
-                    <a href="index.html#contact" class="btn btn-full">Hubungi Kami</a>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-paint-brush"></i>
+                </div>
+                <h3>Desain Game & UI/UX</h3>
+                <p>Desain gameplay yang menarik, mekanika yang solid, dan antarmuka yang user-friendly.</p>
+                <ul class="service-features">
+                    <li>Game mechanics design</li>
+                    <li>Level design dan world building</li>
+                    <li>UI/UX design</li>
+                    <li>Character dan asset design</li>
+                    <li>Storytelling dan narrative</li>
+                </ul>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <h3>Pemrograman Game</h3>
+                <p>Implementasi teknis menggunakan engine dan teknologi terkini dengan best practices.</p>
+                <ul class="service-features">
+                    <li>Unity 3D/2D development</li>
+                    <li>Unreal Engine development</li>
+                    <li>Custom game engine</li>
+                    <li>AI dan pathfinding</li>
+                    <li>Physics dan animation</li>
+                </ul>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <h3>Mobile Game Development</h3>
+                <p>Optimasi khusus untuk platform mobile dengan performa dan pengalaman terbaik.</p>
+                <ul class="service-features">
+                    <li>iOS dan Android development</li>
+                    <li>Performance optimization</li>
+                    <li>Touch controls</li>
+                    <li>Monetization integration</li>
+                    <li>App store optimization</li>
+                </ul>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-vr-cardboard"></i>
+                </div>
+                <h3>VR/AR Game Development</h3>
+                <p>Pengalaman imersif menggunakan teknologi realitas virtual dan augmented reality.</p>
+                <ul class="service-features">
+                    <li>VR headset compatibility</li>
+                    <li>3D spatial design</li>
+                    <li>Motion controls</li>
+                    <li>Performance optimization</li>
+                    <li>User experience design</li>
+                </ul>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-headset"></i>
+                </div>
+                <h3>Multiplayer & Networking</h3>
+                <p>Sistem multiplayer yang stabil dan skalabel untuk berbagai jenis game.</p>
+                <ul class="service-features">
+                    <li>Real-time multiplayer</li>
+                    <li>Server infrastructure</li>
+                    <li>Matchmaking systems</li>
+                    <li>Leaderboards</li>
+                    <li>Social features</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Process Section -->
+<section class="process">
+    <div class="container">
+        <div class="section-title">
+            <h2>Proses Pengembangan</h2>
+            <p>Kami mengikuti metodologi yang terstruktur untuk memastikan hasil yang berkualitas</p>
+        </div>
+        <div class="process-grid">
+            <div class="process-step">
+                <div class="process-number">1</div>
+                <h3>Discovery & Planning</h3>
+                <p>Analisis kebutuhan, riset pasar, dan perencanaan proyek yang detail</p>
+            </div>
+            <div class="process-step">
+                <div class="process-number">2</div>
+                <h3>Design & Prototyping</h3>
+                <p>Pembuatan konsep, desain, dan prototype untuk validasi ide</p>
+            </div>
+            <div class="process-step">
+                <div class="process-number">3</div>
+                <h3>Development</h3>
+                <p>Pengembangan game dengan agile methodology dan regular updates</p>
+            </div>
+            <div class="process-step">
+                <div class="process-number">4</div>
+                <h3>Testing & QA</h3>
+                <p>Comprehensive testing untuk memastikan kualitas dan performa</p>
+            </div>
+            <div class="process-step">
+                <div class="process-number">5</div>
+                <h3>Launch & Support</h3>
+                <p>Peluncuran game dan dukungan pasca-launch yang berkelanjutan</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Pricing Section -->
+<section class="pricing">
+    <div class="container">
+        <div class="section-title">
+            <h2>Paket Layanan</h2>
+            <p>Pilih paket yang sesuai dengan kebutuhan dan budget proyek Anda</p>
+        </div>
+        <div class="section-subtitle">
+            <p>Semua paket kami dirancang untuk memberikan nilai maksimal dengan fleksibilitas tinggi. Kami juga menyediakan konsultasi gratis untuk membantu Anda memilih paket yang tepat.</p>
+        </div>
+        <div class="pricing-grid">
+            <div class="pricing-card custom">
+                <div class="pricing-header">
+                    <h3>Student/Prototype</h3>
+                    <div class="price">Custom</div>
+                </div>
+                <ul class="pricing-features">
+                    <li><i class="fas fa-check"></i> Game 2D sederhana</li>
+                    <li><i class="fas fa-check"></i> Basic gameplay mechanics</li>
+                    <li><i class="fas fa-check"></i> 3-5 level</li>
+                    <li><i class="fas fa-check"></i> Basic UI/UX</li>
+                    <li><i class="fas fa-check"></i> Testing dasar</li>
+                    <li><i class="fas fa-check"></i> Dokumentasi proyek</li>
+                    <li><i class="fas fa-check"></i> Support 2 bulan</li>
+                    <li class="muted"><i class="fas fa-times"></i> Sound & music</li>
+                    <li class="muted"><i class="fas fa-times"></i> Multiplayer</li>
+                    <li class="muted"><i class="fas fa-times"></i> Marketing support</li>
+                </ul>
+                <a href="https://wa.me/6285117590001" class="btn" target="_blank" rel="noopener">Konsultasi Gratis</a>
+            </div>
+            <div class="pricing-card featured">
+                <div class="popular-badge">POPULAR</div>
+                <div class="pricing-header">
+                    <h3>Professional</h3>
+                    <div class="price">Rp 35<span>Juta</span></div>
+                </div>
+                <ul class="pricing-features">
+                    <li><i class="fas fa-check"></i> Game 2D/3D kompleks</li>
+                    <li><i class="fas fa-check"></i> Advanced mechanics</li>
+                    <li><i class="fas fa-check"></i> 10-20 level</li>
+                    <li><i class="fas fa-check"></i> Custom UI/UX</li>
+                    <li><i class="fas fa-check"></i> Sound & music</li>
+                    <li><i class="fas fa-check"></i> Multiplayer basic</li>
+                    <li><i class="fas fa-check"></i> Marketing assets</li>
+                    <li><i class="fas fa-check"></i> Support 6 bulan</li>
+                    <li class="muted"><i class="fas fa-times"></i> VR/AR support</li>
+                    <li class="muted"><i class="fas fa-times"></i> Advanced analytics</li>
+                </ul>
+                <a href="contact.html" class="btn">Pilih Paket</a>
+            </div>
+            <div class="pricing-card custom">
+                <div class="pricing-header">
+                    <h3>Enterprise/AAA</h3>
+                    <div class="price">Custom</div>
+                </div>
+                <ul class="pricing-features">
+                    <li><i class="fas fa-check"></i> Game AAA quality</li>
+                    <li><i class="fas fa-check"></i> Custom engine</li>
+                    <li><i class="fas fa-check"></i> Unlimited features</li>
+                    <li><i class="fas fa-check"></i> VR/AR support</li>
+                    <li><i class="fas fa-check"></i> Advanced multiplayer</li>
+                    <li><i class="fas fa-check"></i> Full marketing support</li>
+                    <li><i class="fas fa-check"></i> Analytics & insights</li>
+                    <li><i class="fas fa-check"></i> Dedicated project manager</li>
+                    <li><i class="fas fa-check"></i> Support 1 tahun</li>
+                    <li><i class="fas fa-check"></i> Post-launch maintenance</li>
+                </ul>
+                <a href="https://wa.me/6285117590001" class="btn" target="_blank" rel="noopener">Konsultasi Premium</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="testimonials">
+    <div class="container">
+        <div class="section-title">
+            <h2>Apa Kata Klien Kami</h2>
+            <p>Pengalaman nyata dari klien yang telah bekerja sama dengan kami</p>
+        </div>
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <div class="testimonial-content">
+                    "Mainra Games membantu kami mewujudkan ide game edukasi untuk anak-anak dengan sangat baik. Prosesnya cepat dan hasilnya melebihi ekspektasi kami."
+                </div>
+                <div class="testimonial-author">
+                    <div class="author-avatar">SD</div>
+                    <div class="author-info">
+                        <h4>Sari Dewi</h4>
+                        <p>CEO EduTech Solutions</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-content">
+                    "Sebagai startup indie, kami membutuhkan solusi yang efisien dan berkualitas. Mainra memberikan paket yang tepat dengan harga terjangkau."
+                </div>
+                <div class="testimonial-author">
+                    <div class="author-avatar">AR</div>
+                    <div class="author-info">
+                        <h4>Andi Riyanto</h4>
+                        <p>Founder GameCraft Studio</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-content">
+                    "Kolaborasi dengan Mainra untuk proyek VR kami sangat luar biasa. Tim mereka profesional dan memiliki pemahaman teknis yang mendalam."
+                </div>
+                <div class="testimonial-author">
+                    <div class="author-avatar">MP</div>
+                    <div class="author-info">
+                        <h4>Maria Putri</h4>
+                        <p>CTO TechInnovate</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </header>
+    </div>
+</section>
 
-    <!-- Page Header -->
-    <section class="page-header">
-        <div class="container">
-            <h1>Services</h1>
-            <p>Kami menawarkan berbagai layanan pengembangan game profesional untuk memenuhi kebutuhan proyek Anda</p>
+<!-- FAQ Section -->
+<section class="faq">
+    <div class="container">
+        <div class="section-title">
+            <h2>Pertanyaan Umum</h2>
+            <p>Pertanyaan yang sering diajukan tentang layanan kami</p>
         </div>
-    </section>
-
-    <!-- Services Section -->
-    <section class="services">
-        <div class="container">
-            <div class="section-title">
-                <h2>Services</h2>
-                <p>Dari konsep hingga peluncuran, kami siap membantu mewujudkan visi game Anda</p>
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Berapa lama waktu pengembangan game?</h3>
+                    <i class="fas fa-chevron-down faq-toggle"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Waktu pengembangan tergantung pada kompleksitas proyek. Untuk paket Student/Prototype biasanya memakan waktu 2-3 bulan, Professional 4-6 bulan, dan Enterprise bisa mencapai 8-12 bulan atau lebih.</p>
+                </div>
             </div>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-gamepad"></i>
-                    </div>
-                    <h3>Pengembangan Game Lengkap</h3>
-                    <p>Pengembangan game dari awal hingga akhir, termasuk konsep, desain, pengkodean, testing, dan peluncuran.</p>
-                    <ul class="service-features">
-                        <li>Game Design Document (GDD)</li>
-                        <li>Prototyping dan iterasi</li>
-                        <li>Pengembangan fitur lengkap</li>
-                        <li>Testing dan quality assurance</li>
-                        <li>Deployment dan maintenance</li>
-                    </ul>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Apakah saya bisa memodifikasi paket yang ada?</h3>
+                    <i class="fas fa-chevron-down faq-toggle"></i>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-paint-brush"></i>
-                    </div>
-                    <h3>Desain Game & UI/UX</h3>
-                    <p>Desain gameplay yang menarik, mekanika yang solid, dan antarmuka yang user-friendly.</p>
-                    <ul class="service-features">
-                        <li>Game mechanics design</li>
-                        <li>Level design dan world building</li>
-                        <li>UI/UX design</li>
-                        <li>Character dan asset design</li>
-                        <li>Storytelling dan narrative</li>
-                    </ul>
+                <div class="faq-answer">
+                    <p>Tentu saja! Kami sangat fleksibel dalam menyesuaikan paket dengan kebutuhan spesifik Anda. Silakan hubungi kami untuk konsultasi gratis dan kami akan bantu membuat paket yang sesuai.</p>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <h3>Pemrograman Game</h3>
-                    <p>Implementasi teknis menggunakan engine dan teknologi terkini dengan best practices.</p>
-                    <ul class="service-features">
-                        <li>Unity 3D/2D development</li>
-                        <li>Unreal Engine development</li>
-                        <li>Custom game engine</li>
-                        <li>AI dan pathfinding</li>
-                        <li>Physics dan animation</li>
-                    </ul>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Apakah paket Student/Prototype cocok untuk tugas kuliah?</h3>
+                    <i class="fas fa-chevron-down faq-toggle"></i>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
-                    <h3>Mobile Game Development</h3>
-                    <p>Optimasi khusus untuk platform mobile dengan performa dan pengalaman terbaik.</p>
-                    <ul class="service-features">
-                        <li>iOS dan Android development</li>
-                        <li>Performance optimization</li>
-                        <li>Touch controls</li>
-                        <li>Monetization integration</li>
-                        <li>App store optimization</li>
-                    </ul>
+                <div class="faq-answer">
+                    <p>Ya, paket Student/Prototype dirancang khusus untuk mahasiswa dan individu yang ingin membuat prototype game untuk pembelajaran, tugas kuliah, atau portofolio. Kami juga menyediakan dokumentasi lengkap untuk keperluan akademik.</p>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-vr-cardboard"></i>
-                    </div>
-                    <h3>VR/AR Game Development</h3>
-                    <p>Pengalaman imersif menggunakan teknologi realitas virtual dan augmented reality.</p>
-                    <ul class="service-features">
-                        <li>VR headset compatibility</li>
-                        <li>3D spatial design</li>
-                        <li>Motion controls</li>
-                        <li>Performance optimization</li>
-                        <li>User experience design</li>
-                    </ul>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Apa yang termasuk dalam support pasca-launch?</h3>
+                    <i class="fas fa-chevron-down faq-toggle"></i>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-headset"></i>
-                    </div>
-                    <h3>Multiplayer & Networking</h3>
-                    <p>Sistem multiplayer yang stabil dan skalabel untuk berbagai jenis game.</p>
-                    <ul class="service-features">
-                        <li>Real-time multiplayer</li>
-                        <li>Server infrastructure</li>
-                        <li>Matchmaking systems</li>
-                        <li>Leaderboards</li>
-                        <li>Social features</li>
-                    </ul>
+                <div class="faq-answer">
+                    <p>Support pasca-launch mencakup bug fixing, update kecil, dan konsultasi teknis. Untuk paket Professional dan Enterprise, kami juga menyediakan analisis performa dan rekomendasi improvement.</p>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Process Section -->
-    <section class="process">
-        <div class="container">
-            <div class="section-title">
-                <h2>Proses Pengembangan</h2>
-                <p>Kami mengikuti metodologi yang terstruktur untuk memastikan hasil yang berkualitas</p>
-            </div>
-            <div class="process-grid">
-                <div class="process-step">
-                    <div class="process-number">1</div>
-                    <h3>Discovery & Planning</h3>
-                    <p>Analisis kebutuhan, riset pasar, dan perencanaan proyek yang detail</p>
-                </div>
-                <div class="process-step">
-                    <div class="process-number">2</div>
-                    <h3>Design & Prototyping</h3>
-                    <p>Pembuatan konsep, desain, dan prototype untuk validasi ide</p>
-                </div>
-                <div class="process-step">
-                    <div class="process-number">3</div>
-                    <h3>Development</h3>
-                    <p>Pengembangan game dengan agile methodology dan regular updates</p>
-                </div>
-                <div class="process-step">
-                    <div class="process-number">4</div>
-                    <h3>Testing & QA</h3>
-                    <p>Comprehensive testing untuk memastikan kualitas dan performa</p>
-                </div>
-                <div class="process-step">
-                    <div class="process-number">5</div>
-                    <h3>Launch & Support</h3>
-                    <p>Peluncuran game dan dukungan pasca-launch yang berkelanjutan</p>
-                </div>
+<!-- CTA Section -->
+<section class="cta">
+    <div class="container">
+        <h2>Siap Memulai Proyek Game Anda?</h2>
+        <p>Konsultasi gratis dengan tim kami untuk mendiskusikan ide dan kebutuhan proyek game Anda</p>
+        <a href="https://wa.me/6285117590001" class="btn">Mulai Konsultasi</a>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-logo">Mainra<span>Games</span></div>
+            <p>Mewujudkan ide game Anda menjadi kenyataan</p>
+            <div class="social-links">
+                <a href="https://facebook.com/mainragames" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://twitter.com/mainragames" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://instagram.com/mainragames" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://linkedin.com/company/mainragames" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://github.com/mainragames" target="_blank"><i class="fab fa-github"></i></a>
             </div>
         </div>
-    </section>
-
-    <!-- Pricing Section -->
-    <section class="pricing">
-        <div class="container">
-            <div class="section-title">
-                <h2>Paket Layanan</h2>
-                <p>Pilih paket yang sesuai dengan kebutuhan dan budget proyek Anda</p>
-            </div>
-            <div class="pricing-grid">
-                <div class="pricing-card">
-                    <div class="pricing-header">
-                        <h3>Starter</h3>
-                        <div class="price">Rp 15<span>Juta</span></div>
-                    </div>
-                    <ul class="pricing-features">
-                        <li>Game 2D sederhana</li>
-                        <li>Basic gameplay mechanics</li>
-                        <li>5 level</li>
-                        <li>Basic UI/UX</li>
-                        <li>Testing dasar</li>
-                        <li>Support 3 bulan</li>
-                    </ul>
-                    <a href="contact.html" class="btn">Pilih Paket</a>
-                </div>
-                <div class="pricing-card featured">
-                    <div class="pricing-header">
-                        <h3>Professional</h3>
-                        <div class="price">Rp 35<span>Juta</span></div>
-                    </div>
-                    <ul class="pricing-features">
-                        <li>Game 2D/3D kompleks</li>
-                        <li>Advanced mechanics</li>
-                        <li>15+ level</li>
-                        <li>Custom UI/UX</li>
-                        <li>Sound & music</li>
-                        <li>Multiplayer basic</li>
-                        <li>Support 6 bulan</li>
-                    </ul>
-                    <a href="contact.html" class="btn">Pilih Paket</a>
-                </div>
-                <div class="pricing-card">
-                    <div class="pricing-header">
-                        <h3>Enterprise</h3>
-                        <div class="price">Custom</div>
-                    </div>
-                    <ul class="pricing-features">
-                        <li>Game AAA quality</li>
-                        <li>Custom engine</li>
-                        <li>Unlimited features</li>
-                        <li>VR/AR support</li>
-                        <li>Advanced multiplayer</li>
-                        <li>Marketing support</li>
-                        <li>Support 1 tahun</li>
-                    </ul>
-                    <a href="https://wa.me/6285117590001" class="btn" target="_blank" rel="noopener">Konsultasi</a>
-                </div>
-            </div>
+        <div class="copyright">
+            <p>&copy; 2023 Mainra Games. Hak Cipta Dilindungi.</p>
         </div>
-    </section>
+    </div>
+</footer>
 
-    <!-- CTA Section -->
-    <section class="cta">
-        <div class="container">
-            <h2>Siap Memulai Proyek Game Anda?</h2>
-            <p>Konsultasi gratis dengan tim kami untuk mendiskusikan ide dan kebutuhan proyek game Anda</p>
-            <a href="https://wa.me/6285117590001" class="btn">Mulai Konsultasi</a>
-        </div>
-    </section>
+<script>
+    // Hamburger Menu Functionality
+    const hamburger = document.querySelector('.hamburger');
+    const mobileNav = document.querySelector('.mobile-nav');
+    const closeNav = document.querySelector('.close-nav');
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-links a');
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">Mainra<span>Games</span></div>
-                <p>Mewujudkan ide game Anda menjadi kenyataan</p>
-                <div class="social-links">
-                    <a href="https://facebook.com/mainragames" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://twitter.com/mainragames" target="_blank"><i class="fab fa-twitter"></i></a>
-                    <a href="https://instagram.com/mainragames" target="_blank"><i class="fab fa-instagram"></i></a>
-                    <a href="https://linkedin.com/company/mainragames" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="https://github.com/mainragames" target="_blank"><i class="fab fa-github"></i></a>
-                </div>
-            </div>
-            <div class="copyright">
-                <p>&copy; 2023 Mainra Games. Hak Cipta Dilindungi.</p>
-            </div>
-        </div>
-    </footer>
+    // Toggle mobile navigation
+    hamburger.addEventListener('click', function() {
+        mobileNav.classList.add('active');
+        hamburger.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    });
 
-    <script>
-        // Hamburger Menu Functionality
-        const hamburger = document.querySelector('.hamburger');
-        const mobileNav = document.querySelector('.mobile-nav');
-        const closeNav = document.querySelector('.close-nav');
-        const mobileNavLinks = document.querySelectorAll('.mobile-nav-links a');
+    // Close mobile navigation
+    closeNav.addEventListener('click', function() {
+        mobileNav.classList.remove('active');
+        hamburger.classList.remove('active');
+        document.body.style.overflow = ''; // Restore scrolling
+    });
 
-        // Toggle mobile navigation
-        hamburger.addEventListener('click', function() {
-            mobileNav.classList.add('active');
-            hamburger.classList.add('active');
-            document.body.style.overflow = 'hidden'; // Prevent background scrolling
-        });
-
-        // Close mobile navigation
-        closeNav.addEventListener('click', function() {
+    // Close mobile navigation when clicking on a link
+    mobileNavLinks.forEach(link => {
+        link.addEventListener('click', function() {
             mobileNav.classList.remove('active');
             hamburger.classList.remove('active');
-            document.body.style.overflow = ''; // Restore scrolling
+            document.body.style.overflow = '';
         });
+    });
 
-        // Close mobile navigation when clicking on a link
-        mobileNavLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                mobileNav.classList.remove('active');
-                hamburger.classList.remove('active');
-                document.body.style.overflow = '';
+    // Close mobile navigation when clicking outside
+    mobileNav.addEventListener('click', function(e) {
+        if (e.target === mobileNav) {
+            mobileNav.classList.remove('active');
+            hamburger.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+
+    // Close mobile navigation on escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && mobileNav.classList.contains('active')) {
+            mobileNav.classList.remove('active');
+            hamburger.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+
+    // Header scroll effect
+    window.addEventListener('scroll', function() {
+        const header = document.querySelector('header');
+        if (window.scrollY > 100) {
+            header.style.backgroundColor = 'rgba(26, 26, 46, 0.95)';
+            header.style.padding = '0.5rem 0';
+        } else {
+            header.style.backgroundColor = 'rgba(26, 26, 46, 0.9)';
+            header.style.padding = '1rem 0';
+        }
+    });
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
             });
         });
+    });
 
-        // Close mobile navigation when clicking outside
-        mobileNav.addEventListener('click', function(e) {
-            if (e.target === mobileNav) {
-                mobileNav.classList.remove('active');
-                hamburger.classList.remove('active');
-                document.body.style.overflow = '';
+    // FAQ Accordion
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        question.addEventListener('click', () => {
+            item.classList.toggle('active');
+        });
+    });
+
+    // Pricing card hover effect enhancement
+    const pricingCards = document.querySelectorAll('.pricing-card');
+    pricingCards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            if (!this.classList.contains('featured')) {
+                this.style.transform = 'translateY(-10px)';
             }
         });
 
-        // Close mobile navigation on escape key
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && mobileNav.classList.contains('active')) {
-                mobileNav.classList.remove('active');
-                hamburger.classList.remove('active');
-                document.body.style.overflow = '';
+        card.addEventListener('mouseleave', function() {
+            if (!this.classList.contains('featured')) {
+                this.style.transform = 'translateY(0)';
             }
         });
-
-        // Header scroll effect
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.style.backgroundColor = 'rgba(26, 26, 46, 0.9)';
-                header.style.padding = '0.5rem 0';
-            } else {
-                header.style.backgroundColor = 'rgba(26, 26, 46, 0.9)';
-                header.style.padding = '1rem 0';
-            }
-        });
-
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>
+    });
+</script>
 </body>
 </html>
