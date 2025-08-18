@@ -7,117 +7,699 @@
     <link rel="icon" type="image/x-icon" href="Assets/Logo Mainra Warna bg terang.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body {
-            background-color: #1a1a2e;
-            color: #f8f9fa;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
+
+        :root {
+            --primary: #8a2be2;
+            --secondary: #ff6b6b;
+            --dark: #0f0c29;
+            --darker: #09071c;
+            --light: #f8f9fa;
+            --accent: #4cc9f0;
+            --community: #ff9e00;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 100%);
+            color: var(--light);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
         .container {
             width: 90%;
-            max-width: 700px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 3rem 0;
+            padding: 2rem 1rem;
         }
-        .learning-header {
+
+        /* Header Styles */
+        header {
+            background: rgba(15, 12, 41, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a.active {
+            color: var(--accent);
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        .btn {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(138, 43, 226, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(138, 43, 226, 0.5);
+        }
+
+        .btn-community {
+            background: linear-gradient(45deg, var(--community), #ffcc00);
+            color: var(--darker);
+        }
+
+        .btn-community:hover {
+            box-shadow: 0 8px 25px rgba(255, 158, 0, 0.5);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 140px 0 60px;
             text-align: center;
-            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
         }
-        .learning-header h1 {
-            color: #4cc9f0;
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            top: -50%;
+            left: -50%;
+            background: radial-gradient(circle, rgba(138, 43, 226, 0.1) 0%, transparent 70%);
+            animation: rotate 30s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero h1 span {
+            color: var(--accent);
+        }
+
+        .hero h1 .community-highlight {
+            color: var(--community);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #ccc;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            line-height: 1.8;
+        }
+
+        /* Learning Benefits */
+        .benefits {
+            padding: 4rem 0;
+            background: rgba(0, 0, 0, 0.2);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
             font-size: 2.5rem;
             margin-bottom: 1rem;
+            color: var(--accent);
         }
-        .learning-header p {
-            color: #ccc;
-            font-size: 1.2rem;
+
+        .section-title p {
+            color: #aaa;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
         }
-        .community-section {
-            background: rgba(255,255,255,0.05);
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .benefit-card {
+            background: rgba(255, 255, 255, 0.05);
             border-radius: 15px;
             padding: 2rem;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
-        .community-section h2 {
-            color: #8a2be2;
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--community);
+        }
+
+        .benefit-icon {
+            font-size: 3rem;
+            color: var(--community);
+            margin-bottom: 1.5rem;
+        }
+
+        .benefit-card h3 {
+            color: var(--community);
             margin-bottom: 1rem;
         }
-        .community-section p {
-            color: #bbb;
+
+        .benefit-card p {
+            color: #ccc;
+        }
+
+        /* Community Platforms */
+        .platforms {
+            padding: 6rem 0;
+        }
+
+        .platforms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .platform-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .platform-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .platform-card:hover::before {
+            left: 100%;
+        }
+
+        .platform-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .discord-card:hover {
+            border-color: #5865F2;
+        }
+
+        .whatsapp-card:hover {
+            border-color: #25D366;
+        }
+
+        .platform-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .discord-card .platform-icon {
+            color: #5865F2;
+        }
+
+        .whatsapp-card .platform-icon {
+            color: #25D366;
+        }
+
+        .platform-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .discord-card h3 {
+            color: #5865F2;
+        }
+
+        .whatsapp-card h3 {
+            color: #25D366;
+        }
+
+        .platform-card p {
+            color: #ccc;
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .platform-features {
+            list-style: none;
+            text-align: left;
+            margin: 1.5rem 0;
+        }
+
+        .platform-features li {
+            padding: 0.5rem 0;
+            color: #ccc;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .platform-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--community);
+            font-weight: bold;
+        }
+
+        /* Activities */
+        .activities {
+            padding: 6rem 0;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .activities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .activity-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .activity-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+
+        .activity-icon {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+        }
+
+        .activity-card h3 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .activity-card p {
+            color: #ccc;
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .cta p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta .btn {
+            background: white;
+            color: var(--primary);
+            font-size: 1.1rem;
+            padding: 1rem 2rem;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(9, 7, 28, 0.95);
+            padding: 4rem 0 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-content {
             margin-bottom: 2rem;
         }
-        .community-links {
+
+        .footer-logo {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .footer-logo span {
+            color: var(--secondary);
+        }
+
+        .social-links {
             display: flex;
             justify-content: center;
-            gap: 2rem;
+            gap: 1.5rem;
+            margin: 2rem 0;
         }
-        .community-link {
-            display: flex;
-            flex-direction: column;
+
+        .social-links a {
+            display: inline-flex;
             align-items: center;
-            background: #222244;
-            border-radius: 10px;
-            padding: 1.5rem 2rem;
-            text-decoration: none;
-            color: #fff;
-            transition: background 0.3s, transform 0.3s;
-            box-shadow: 0 4px 12px rgba(76,201,240,0.1);
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--light);
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
-        .community-link:hover {
-            background: #4cc9f0;
-            color: #1a1a2e;
-            transform: translateY(-5px);
+
+        .social-links a:hover {
+            background: var(--accent);
+            color: var(--dark);
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(76, 201, 240, 0.4);
         }
-        .community-link i {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-        }
-        @media (max-width: 600px) {
-            .community-links {
-                flex-direction: column;
-                gap: 1.5rem;
-            }
-            .container {
-                padding: 1.5rem 0;
-            }
-        }
-        .back-link {
-            display: inline-block;
+
+        .copyright {
+            color: #777;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
             margin-top: 2rem;
-            color: #4cc9f0;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.2s;
         }
-        .back-link:hover {
-            color: #8a2be2;
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .platforms-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .platforms-grid {
+                gap: 2rem;
+            }
+
+            .platform-card {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .platform-card {
+                padding: 1.5rem;
+            }
         }
     </style>
 </head>
 <body>
+<!-- Header -->
+<header>
+    <div class="navbar">
+        <a href="index.html" class="logo">
+            Mainra<span>Games</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="games.html">Games</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="learning.html" class="active">Learning</a></li>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+        </ul>
+        <a href="index.html#contact" class="btn">Hubungi Kami</a>
+    </div>
+</header>
+
+<!-- Hero Section -->
+<section class="hero">
     <div class="container">
-        <div class="learning-header">
-            <h1>Mainra Learning Community</h1>
-            <p>Bergabunglah dengan komunitas Mainra di Discord dan WhatsApp untuk belajar, berbagi, dan berkembang bersama para pengembang game Indonesia!</p>
+        <h1>Bergabung dengan <span>Learning Community</span> <span class="community-highlight">Mainra</span></h1>
+        <p>Tempat belajar, berbagi, dan berkembang bersama para pengembang game Indonesia. Akses workshop, webinar, dan dukungan dari komunitas aktif kami.</p>
+    </div>
+</section>
+
+<!-- Benefits Section -->
+<section class="benefits">
+    <div class="container">
+        <div class="section-title">
+            <h2>Manfaat Bergabung</h2>
+            <p>Apa yang akan Anda dapatkan dengan bergabung di komunitas Mainra</p>
         </div>
-        <div class="community-section">
-            <h2>Gabung Komunitas Kami</h2>
-            <p>Kami memiliki komunitas aktif di Discord dan WhatsApp. Dapatkan akses ke diskusi, workshop, dan update terbaru seputar pengembangan game bersama Mainra.</p>
-            <div class="community-links">
-                <a class="community-link" href="https://discord.gg/zreAsusu25" target="_blank">
-                    <i class="fab fa-discord"></i>
-                    <span>Join Discord</span>
-                </a>
-                <a class="community-link" href="https://chat.whatsapp.com/K0frjAuEC4KEwh1fTXkX7C" target="_blank">
-                    <i class="fab fa-whatsapp"></i>
-                    <span>Join WhatsApp</span>
-                </a>
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <div class="benefit-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h3>Learning Resources</h3>
+                <p>Akses ke berbagai materi pembelajaran, tutorial, dan dokumentasi pengembangan game terkini.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3>Networking</h3>
+                <p>Berkenalan dengan sesama developer, mentor, dan profesional industri game di Indonesia.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">
+                    <i class="fas fa-hands-helping"></i>
+                </div>
+                <h3>Peer Support</h3>
+                <p>Dapatkan bantuan dan feedback langsung dari anggota komunitas yang berpengalaman.</p>
             </div>
         </div>
-        <a href="index.html" class="back-link">&larr; Kembali ke Beranda</a>
     </div>
+</section>
+
+<!-- Community Platforms -->
+<section class="platforms">
+    <div class="container">
+        <div class="section-title">
+            <h2>Platform Komunitas</h2>
+            <p>Bergabunglah melalui platform yang paling nyaman untuk Anda</p>
+        </div>
+        <div class="platforms-grid">
+            <div class="platform-card discord-card">
+                <div class="platform-icon">
+                    <i class="fab fa-discord"></i>
+                </div>
+                <h3>Discord Server</h3>
+                <p>Tempat interaksi real-time dengan anggota komunitas, diskusi teknis, dan event khusus.</p>
+                <ul class="platform-features">
+                    <li>Channel khusus berdasarkan topik</li>
+                    <li>Voice chat untuk kolaborasi</li>
+                    <li>Event dan workshop rutin</li>
+                    <li>Resource sharing</li>
+                </ul>
+                <a href="https://discord.gg/zreAsusu25" target="_blank" class="btn">Join Discord Server</a>
+            </div>
+            <div class="platform-card whatsapp-card">
+                <div class="platform-icon">
+                    <i class="fab fa-whatsapp"></i>
+                </div>
+                <h3>WhatsApp Group</h3>
+                <p>Grup diskusi yang lebih santai untuk update berita, sharing pengalaman, dan networking.</p>
+                <ul class="platform-features">
+                    <li>Diskusi harian yang aktif</li>
+                    <li>Sharing project dan portofolio</li>
+                    <li>Update event dan webinar</li>
+                    <li>Koneksi personal dengan anggota</li>
+                </ul>
+                <a href="https://chat.whatsapp.com/K0frjAuEC4KEwh1fTXkX7C" target="_blank" class="btn btn-community">Join WhatsApp Group</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Community Activities -->
+<section class="activities">
+    <div class="container">
+        <div class="section-title">
+            <h2>Aktivitas Komunitas</h2>
+            <p>Berbagai kegiatan yang kami selenggarakan untuk mendukung pertumbuhan anggota komunitas</p>
+        </div>
+        <div class="activities-grid">
+            <div class="activity-card">
+                <div class="activity-icon">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                </div>
+                <h3>Workshop</h3>
+                <p>Sesi pelatihan praktis dengan mentor ahli di bidang pengembangan game</p>
+            </div>
+            <div class="activity-card">
+                <div class="activity-icon">
+                    <i class="fas fa-podcast"></i>
+                </div>
+                <h3>Webinar</h3>
+                <p>Pembahasan mendalam tentang berbagai aspek pembuatan game oleh profesional</p>
+            </div>
+            <div class="activity-card">
+                <div class="activity-icon">
+                    <i class="fas fa-trophy"></i>
+                </div>
+                <h3>Kompetisi</h3>
+                <p>Event kompetitif untuk mengasah keterampilan dan menampilkan karya terbaik</p>
+            </div>
+            <div class="activity-card">
+                <div class="activity-icon">
+                    <i class="fas fa-gamepad"></i>
+                </div>
+                <h3>Game Jam</h3>
+                <p>Event kolaboratif untuk membuat game dalam waktu terbatas dengan tema tertentu</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta">
+    <div class="container">
+        <h2>Siap Bergabung dengan Komunitas Kami?</h2>
+        <p>Mulai perjalanan belajar pengembangan game Anda bersama Mainra Games</p>
+        <div style="display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap;">
+            <a href="https://discord.gg/zreAsusu25" target="_blank" class="btn">Join Discord</a>
+            <a href="https://chat.whatsapp.com/K0frjAuEC4KEwh1fTXkX7C" target="_blank" class="btn btn-community">Join WhatsApp</a>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-logo">Mainra<span>Games</span></div>
+            <p>Studio Profesional & Komunitas Kreatif Pengembangan Game</p>
+            <div class="social-links">
+                <a href="https://facebook.com/mainragames" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://twitter.com/mainragames" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://instagram.com/mainragames" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://linkedin.com/company/mainragames" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://github.com/mainragames" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://itch.io/mainra" target="_blank"><i class="fab fa-itch-io"></i></a>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2024 Mainra Games. Hak Cipta Dilindungi.</p>
+        </div>
+    </div>
+</footer>
 </body>
 </html>
-

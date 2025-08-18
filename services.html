@@ -21,6 +21,8 @@
             --light: #f8f9fa;
             --accent: #4cc9f0;
             --success: #4ade80;
+            --gold: #FFD700;
+            --gold-dark: #daa520;
         }
 
         body {
@@ -559,16 +561,39 @@
             color: #777;
         }
 
-        .pricing-card.custom {
+        .pricing-card.custom-student {
             background: linear-gradient(135deg, rgba(138, 43, 226, 0.1), rgba(76, 201, 240, 0.1));
             border: 1px solid var(--primary);
         }
 
-        .pricing-card.custom .price {
+        .pricing-card.custom-enterprise {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(218, 165, 32, 0.1));
+            border: 1px solid var(--gold);
+        }
+
+        .pricing-card.custom-enterprise .pricing-header h3 {
+            color: var(--gold);
+        }
+
+        .pricing-card.custom-enterprise .price {
+            color: var(--gold);
+        }
+
+        .pricing-card.custom-enterprise .btn {
+            background: linear-gradient(45deg, var(--gold), var(--gold-dark));
+            color: var(--dark);
+        }
+
+        .pricing-card.custom-enterprise .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3);
+        }
+
+        .pricing-card.custom-student .price {
             font-size: 1.8rem;
         }
 
-        .pricing-card.custom .pricing-header h3 {
+        .pricing-card.custom-student .pricing-header h3 {
             color: var(--primary);
         }
 
@@ -1058,16 +1083,16 @@
             </div>
             <div class="service-card">
                 <div class="service-icon">
-                    <i class="fas fa-code"></i>
+                    <i class="fas fa-cube"></i>
                 </div>
-                <h3>Pemrograman Game</h3>
-                <p>Implementasi teknis menggunakan engine dan teknologi terkini dengan best practices.</p>
+                <h3>2D & 3D Asset Creation</h3>
+                <p>Pembuatan aset visual berkualitas tinggi untuk karakter, environment, UI, dan efek visual.</p>
                 <ul class="service-features">
-                    <li>Unity 3D/2D development</li>
-                    <li>Unreal Engine development</li>
-                    <li>Custom game engine</li>
-                    <li>AI dan pathfinding</li>
-                    <li>Physics dan animation</li>
+                    <li>Character design & modeling</li>
+                    <li>Environment & prop creation</li>
+                    <li>UI/UX asset design</li>
+                    <li>Animation 2D/3D</li>
+                    <li>Visual effects (VFX)</li>
                 </ul>
             </div>
             <div class="service-card">
@@ -1164,7 +1189,7 @@
             <p>Semua paket kami dirancang untuk memberikan nilai maksimal dengan fleksibilitas tinggi. Kami juga menyediakan konsultasi gratis untuk membantu Anda memilih paket yang tepat.</p>
         </div>
         <div class="pricing-grid">
-            <div class="pricing-card custom">
+            <div class="pricing-card custom-student">
                 <div class="pricing-header">
                     <h3>Student/Prototype</h3>
                     <div class="price">Custom</div>
@@ -1203,7 +1228,7 @@
                 </ul>
                 <a href="contact.html" class="btn">Pilih Paket</a>
             </div>
-            <div class="pricing-card custom">
+            <div class="pricing-card custom-enterprise">
                 <div class="pricing-header">
                     <h3>Enterprise/AAA</h3>
                     <div class="price">Custom</div>
