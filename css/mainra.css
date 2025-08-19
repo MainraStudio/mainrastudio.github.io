@@ -59,7 +59,7 @@ header{
   transition:all .3s ease
 }
 .logo{font-size:1.9rem;font-weight:800;color:var(--accent);text-decoration:none;display:flex;align-items:center;letter-spacing:.5px}
-.logo img{height:var(--logo-h);width:auto;object-fit:contain;max-width:220px;margin-right:12px;filter:drop-shadow(0 0 8px rgba(0,201,255,.4))}
+.logo img{height:var(--logo-h);width:var(--logo-h);object-fit:cover;border-radius:50%;margin-right:12px;filter:drop-shadow(0 0 8px rgba(0,201,255,.4));background:rgba(255,255,255,.06);border:1px solid var(--border-color)}
 .logo span{color:var(--secondary);text-shadow:0 0 10px rgba(255,78,141,.5)}
 .nav-links{display:flex;list-style:none}
 .nav-links li{margin-left:2.2rem}
