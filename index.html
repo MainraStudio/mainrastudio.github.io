@@ -224,6 +224,7 @@
     </div>
 </footer>
 <script src="js/games-loader.js"></script>
+<script src="js/nav.js"></script>
 <script>
     // Set dynamic current year in footer
     (function () {
@@ -298,90 +299,7 @@
         }, 800);
     })();
 
-    // Hamburger Menu Functionality
-    const hamburger = document.querySelector('.hamburger');
-    const mobileNav = document.querySelector('.mobile-nav');
-    const closeNav = document.querySelector('.close-nav');
-    const mobileNavLinks = document.querySelectorAll('.mobile-nav-links a');
-
-    // Toggle mobile navigation
-    if (hamburger && mobileNav) {
-        hamburger.addEventListener('click', function() {
-            mobileNav.classList.add('active');
-            hamburger.classList.add('active');
-            document.body.style.overflow = 'hidden'; // Prevent background scrolling
-        });
-    }
-
-    // Close mobile navigation
-    if (closeNav && mobileNav && hamburger) {
-        closeNav.addEventListener('click', function() {
-            mobileNav.classList.remove('active');
-            hamburger.classList.remove('active');
-            document.body.style.overflow = ''; // Restore scrolling
-        });
-    }
-
-    // Close mobile navigation when clicking on a link
-    if (mobileNav && hamburger && mobileNavLinks.length) {
-        mobileNavLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                mobileNav.classList.remove('active');
-                hamburger.classList.remove('active');
-                document.body.style.overflow = '';
-            });
-        });
-    }
-
-    // Close mobile navigation when clicking outside
-    if (mobileNav && hamburger) {
-        mobileNav.addEventListener('click', function(e) {
-            if (e.target === mobileNav) {
-                mobileNav.classList.remove('active');
-                hamburger.classList.remove('active');
-                document.body.style.overflow = '';
-            }
-        });
-    }
-
-    // Close mobile navigation on escape key
-    if (mobileNav && hamburger) {
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && mobileNav.classList.contains('active')) {
-                mobileNav.classList.remove('active');
-                hamburger.classList.remove('active');
-                document.body.style.overflow = '';
-            }
-        });
-    }
-    // Smooth scrolling for navigation links (only for same-page anchors)
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            const href = this.getAttribute('href');
-            if (href !== '#') {
-                e.preventDefault();
-                const target = document.querySelector(href);
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                }
-            }
-        });
-    });
-    // Header scroll effect
-    window.addEventListener('scroll', function() {
-        const header = document.querySelector('header');
-        if (window.scrollY > 100) {
-            header.style.backgroundColor = 'rgba(15, 12, 41, 0.95)';
-            header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.4)';
-            header.style.padding = '0.7rem 0';
-        } else {
-            header.style.backgroundColor = 'rgba(15, 12, 41, 0.85)';
-            header.style.boxShadow = '0 5px 25px rgba(0, 0, 0, 0.3)';
-            header.style.padding = '1rem 0';
-        }
-    });
+    // Navigation handled by nav.js
     // Form submission with Formspree
     // (No custom JS required; use standard form POST to Formspree)
 </script>

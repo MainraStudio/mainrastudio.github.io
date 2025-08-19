@@ -24,6 +24,35 @@
             <li><a href="privacy-policy.html">Privacy Policy</a></li>
         </ul>
         <a href="index.html#contact" class="btn">Hubungi Kami</a>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+    <!-- Mobile Navigation Overlay -->
+    <div class="mobile-nav">
+        <div class="mobile-nav-content">
+            <div class="mobile-nav-header">
+                <a href="index.html" class="logo">
+                    <img src="Assets/LogoMainraGames.png" alt="Mainra Games" width="160" height="55">
+                    <span class="sr-only">Mainra Games</span>
+                </a>
+                <button class="close-nav">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <ul class="mobile-nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="games.html">Games</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="learning.html" class="active">Learning</a></li>
+                <li><a href="privacy-policy.html">Privacy Policy</a></li>
+            </ul>
+            <div class="mobile-nav-footer">
+                <a href="index.html#contact" class="btn btn-full">Hubungi Kami</a>
+            </div>
+        </div>
     </div>
 </header>
 
@@ -180,6 +209,7 @@
         </div>
     </div>
 </footer>
+<script src="js/nav.js"></script>
 <script>
     // Set dynamic current year in footer
     (function(){var y=document.getElementById('currentYear'); if(y) y.textContent=new Date().getFullYear();})();
