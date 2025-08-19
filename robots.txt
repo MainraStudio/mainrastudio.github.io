@@ -1,5 +1,18 @@
 User-agent: Google-adstxt
+# Explicitly allow Google ads crawler to fetch app-ads.txt
+User-agent: AdsBot-Google
+Allow: /app-ads.txt
+Allow: /
 
+# Also allow general Googlebot (some checks may use it)
+User-agent: Googlebot
+Allow: /app-ads.txt
+Allow: /
+
+# Default policy for all crawlers
+User-agent: *
+Allow: /app-ads.txt
+Allow: /
 User-agent: *
 Allow: /
 
