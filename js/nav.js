@@ -14,12 +14,12 @@
     function openNav() {
       if (!mobileNav || !hamburger) return;
       mobileNav.classList.add('active');
-      // Sembunyikan hamburger agar tidak muncul X ganda
+      // Hide hamburger to avoid double X
       hamburger.classList.remove('active');
       hamburger.classList.add('is-hidden');
       document.body.style.overflow = 'hidden';
       setAria(true);
-      // Fokus ke link pertama agar interaktif di keyboard
+      // Focus on the first link for keyboard interaction
       const firstLink = mobileNav.querySelector('.mobile-nav-links a');
       if (firstLink) {
         try { firstLink.focus(); } catch(_) {}
@@ -28,18 +28,18 @@
     function closeNavMenu() {
       if (!mobileNav || !hamburger) return;
       mobileNav.classList.remove('active');
-      // Tampilkan kembali hamburger
+      // Show hamburger again
       hamburger.classList.remove('is-hidden');
       hamburger.classList.remove('active');
       document.body.style.overflow = '';
       setAria(false);
-      // Kembalikan fokus ke hamburger agar aksesibel
+      // Return focus to hamburger for accessibility
       try { hamburger.focus(); } catch(_) {}
     }
 
     // Open/Close handlers (guarded)
     if (hamburger && mobileNav) {
-      hamburger.setAttribute('aria-label', 'Buka navigasi');
+      hamburger.setAttribute('aria-label', 'Open navigation');
       hamburger.setAttribute('aria-expanded', 'false');
       hamburger.addEventListener('click', function(){
         if (mobileNav.classList.contains('active')) {
@@ -50,12 +50,12 @@
       });
     }
     if (closeNav) {
-      closeNav.setAttribute('aria-label', 'Tutup navigasi');
+      closeNav.setAttribute('aria-label', 'Close navigation');
       closeNav.addEventListener('click', closeNavMenu);
     }
     if (mobileNav) {
       mobileNav.setAttribute('aria-hidden', 'true');
-      // klik backdrop untuk tutup
+      // click backdrop to close
       mobileNav.addEventListener('click', function (e) {
         if (e.target === mobileNav) closeNavMenu();
       });

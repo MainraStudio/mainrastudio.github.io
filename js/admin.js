@@ -97,7 +97,7 @@ class GameManager {
         this.saveGames();
         this.renderGames();
         this.resetForm();
-        this.showAlert('Game berhasil ditambahkan! Jangan lupa export JSON untuk menyimpan perubahan.', 'success');
+        this.showAlert('Game added successfully! Don\'t forget to export the JSON to save changes.', 'success');
     }
 
     updateGame(id, gameData) {
@@ -107,16 +107,16 @@ class GameManager {
             this.saveGames();
             this.renderGames();
             this.cancelEdit();
-            this.showAlert('Game berhasil diupdate! Jangan lupa export JSON untuk menyimpan perubahan.', 'success');
+            this.showAlert('Game updated successfully! Don\'t forget to export the JSON to save changes.', 'success');
         }
     }
 
     deleteGame(id) {
-        if (confirm('Apakah Anda yakin ingin menghapus game ini?')) {
+        if (confirm('Are you sure you want to delete this game?')) {
             this.games = this.games.filter(game => game.id != id);
             this.saveGames();
             this.renderGames();
-            this.showAlert('Game berhasil dihapus! Jangan lupa export JSON untuk menyimpan perubahan.', 'success');
+            this.showAlert('Game deleted successfully! Don\'t forget to export the JSON to save changes.', 'success');
         }
     }
 
@@ -183,7 +183,7 @@ class GameManager {
                             ` : `
                                 <div style="flex: 1; background: rgba(255,255,255,0.1); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #666;">
                                     <i class="fab fa-youtube" style="font-size: 2rem;"></i>
-                                    <span style="margin-left: 0.5rem;">Belum ada video</span>
+                                    <span style="margin-left: 0.5rem;">No video available yet</span>
                                 </div>
                             `}
                         </div>
@@ -191,15 +191,15 @@ class GameManager {
                         <div class="highlight-stats">
                             <div class="highlight-stat">
                                 <h4>${this.highlight.stats?.gameplay || '50+'}</h4>
-                                <p>Jam Gameplay</p>
+                                <p>Gameplay Hours</p>
                             </div>
                             <div class="highlight-stat">
                                 <h4>${this.highlight.stats?.characters || '25+'}</h4>
-                                <p>Karakter Unik</p>
+                                <p>Unique Characters</p>
                             </div>
                             <div class="highlight-stat">
                                 <h4>${this.highlight.stats?.worlds || '5+'}</h4>
-                                <p>Dunia Terpisah</p>
+                                <p>Distinct Worlds</p>
                             </div>
                         </div>
                     </div>
@@ -208,8 +208,8 @@ class GameManager {
                 currentHighlight.innerHTML = `
                     <div class="no-highlight">
                         <i class="fas fa-exclamation-triangle" style="font-size: 3rem; color: var(--warning);"></i>
-                        <h3>Game Highlight Tidak Ditemukan</h3>
-                        <p>Game yang dijadikan highlight mungkin telah dihapus</p>
+                        <h3>Highlighted Game Not Found</h3>
+                        <p>The game set as highlight may have been removed</p>
                     </div>
                 `;
             }
@@ -217,8 +217,8 @@ class GameManager {
             currentHighlight.innerHTML = `
                 <div class="no-highlight">
                     <i class="fas fa-crown" style="font-size: 4rem; color: #666; margin-bottom: 1rem;"></i>
-                    <h3>Belum Ada Game Unggulan</h3>
-                    <p>Pilih game untuk dijadikan unggulan</p>
+                    <h3>No Featured Game Yet</h3>
+                    <p>Select a game to set as featured</p>
                 </div>
             `;
         }
@@ -232,7 +232,7 @@ class GameManager {
             highlightSelector.innerHTML = `
                 <div style="text-align: center; padding: 2rem; color: #999;">
                     <i class="fas fa-gamepad" style="font-size: 3rem; margin-bottom: 1rem;"></i>
-                    <p>Belum ada game yang tersedia</p>
+                    <p>No games available yet</p>
                 </div>
             `;
             return;

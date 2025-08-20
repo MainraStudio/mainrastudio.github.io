@@ -37,7 +37,7 @@ class GamesLoader {
                         {
                             id: 1,
                             title: "Adventure Quest",
-                            description: "Game petualangan 2D dengan mekanika unik dan storyline yang menarik",
+                            description: "A 2D adventure game with unique mechanics and an engaging storyline",
                             image: "https://placehold.co/600x400/8a2be2/ffffff?text=Adventure+Quest",
                             screenshots: [
                                 "https://placehold.co/600x400/8a2be2/ffffff?text=Adventure+Quest+1",
@@ -54,7 +54,7 @@ class GamesLoader {
                         {
                             id: 2,
                             title: "Space Defender",
-                            description: "Game tembak-menembak luar angkasa dengan grafis yang memukau",
+                            description: "A space shooter with stunning visuals",
                             image: "https://placehold.co/600x400/ff6b6b/ffffff?text=Space+Defender",
                             screenshots: [
                                 "https://placehold.co/600x400/ff6b6b/ffffff?text=Space+Defender+1",
@@ -71,7 +71,7 @@ class GamesLoader {
                         {
                             id: 3,
                             title: "Mystic Worlds",
-                            description: "Game RPG dengan dunia fantasi yang luas dan karakter yang beragam",
+                            description: "An RPG set in a vast fantasy world featuring a diverse cast of characters",
                             image: "https://placehold.co/600x400/4cc9f0/ffffff?text=Mystic+Worlds",
                             screenshots: [
                                 "https://placehold.co/600x400/4cc9f0/ffffff?text=Mystic+Worlds+1",
@@ -141,7 +141,7 @@ class GamesLoader {
             gamesGrid.innerHTML = `
                 <div style="grid-column: 1/-1; text-align: center; padding: 3rem; color: #999;">
                     <i class="fas fa-gamepad" style="font-size: 4rem; margin-bottom: 1rem;"></i>
-                    <p>Belum ada game yang tersedia</p>
+                    <p>No games available yet</p>
                 </div>
             `;
             return;
@@ -155,7 +155,7 @@ class GamesLoader {
                     <p>${this.escapeHtml(game.description)}</p>
                     ${game.playLink && game.playLink !== '#' ? 
                         `<a href="${game.playLink}" target="_blank" class="btn btn-small" style="margin-top: 1rem;">
-                            <i class="fas fa-play"></i> Main Sekarang
+                            <i class="fas fa-play"></i> Play Now
                         </a>` : ''
                     }
                 </div>
@@ -178,8 +178,8 @@ class GamesLoader {
                 highlightText.innerHTML = `
                     <div style="text-align: center; padding: 3rem; color: #999;">
                         <i class="fas fa-crown" style="font-size: 4rem; margin-bottom: 1rem;"></i>
-                        <h2 style="color: #666; margin-bottom: 1rem;">Belum Ada Game Unggulan</h2>
-                        <p>Kami sedang mempersiapkan game unggulan terbaik untuk Anda</p>
+                        <h2 style="color: #666; margin-bottom: 1rem;">No Featured Game Yet</h2>
+                        <p>We are preparing the best featured game for you.</p>
                     </div>
                 `;
             }
@@ -193,8 +193,8 @@ class GamesLoader {
                 highlightText.innerHTML = `
                     <div style="text-align: center; padding: 3rem; color: #999;">
                         <i class="fas fa-exclamation-triangle" style="font-size: 4rem; margin-bottom: 1rem; color: var(--warning);"></i>
-                        <h2 style="color: #666; margin-bottom: 1rem;">Game Tidak Ditemukan</h2>
-                        <p>Game unggulan yang dipilih tidak tersedia</p>
+                        <h2 style="color: #666; margin-bottom: 1rem;">Game Not Found</h2>
+                        <p>The selected featured game is not available.</p>
                     </div>
                 `;
             }
@@ -210,33 +210,33 @@ class GamesLoader {
             highlightText.innerHTML = `
                 <h2>${this.escapeHtml(displayTitle)}</h2>
                 <p>${this.escapeHtml(displayDescription)}</p>
-                <p>Dengan gameplay yang menarik dan fitur-fitur inovatif, ${this.escapeHtml(displayTitle)} menawarkan pengalaman gaming yang tak terlupakan untuk semua kalangan.</p>
+                <p>Featuring engaging gameplay and innovative features, ${this.escapeHtml(displayTitle)} delivers an unforgettable experience for players of all kinds.</p>
                 <div class="highlight-stats">
                     <div class="stat-item">
                         <h3>${highlightData.stats?.gameplay || '50+'}</h3>
-                        <p>Jam Gameplay</p>
+                        <p>Gameplay Hours</p>
                     </div>
                     <div class="stat-item">
                         <h3>${highlightData.stats?.characters || '25+'}</h3>
-                        <p>Karakter Unik</p>
+                        <p>Unique Characters</p>
                     </div>
                     <div class="stat-item">
                         <h3>${highlightData.stats?.worlds || '5+'}</h3>
-                        <p>Dunia Terpisah</p>
+                        <p>Distinct Worlds</p>
                     </div>
                     <div class="stat-item">
                         <h3>${highlightGame.rating || '4.5'}</h3>
-                        <p>Rating User</p>
+                        <p>User Rating</p>
                     </div>
                 </div>
                 <div class="game-actions">
                     ${highlightGame.playLink && highlightGame.playLink !== '#' ? 
-                        `<a href="${highlightGame.playLink}" target="_blank" class="btn btn-play">Mainkan Sekarang</a>` :
-                        `<a href="#" class="btn btn-play">Segera Hadir</a>`
+                        `<a href="${highlightGame.playLink}" target="_blank" class="btn btn-play">Play Now</a>` :
+                        `<a href="#" class="btn btn-play">Coming Soon</a>`
                     }
                     ${highlightData.youtubeUrl ? 
-                        `<a href="${highlightData.youtubeUrl}" target="_blank" class="btn btn-details">Lihat Trailer</a>` :
-                        `<a href="#" class="btn btn-details">Detail Game</a>`
+                        `<a href="${highlightData.youtubeUrl}" target="_blank" class="btn btn-details">Watch Trailer</a>` :
+                        `<a href="#" class="btn btn-details">Game Details</a>`
                     }
                 </div>
             `;
@@ -285,8 +285,8 @@ class GamesLoader {
             gamesList.innerHTML = `
                 <div class="no-games" style="text-align: center; padding: 3rem; color: #999;">
                     <i class="fas fa-gamepad" style="font-size: 4rem; margin-bottom: 1rem;"></i>
-                    <h3>Belum Ada Game</h3>
-                    <p>Kami sedang mengembangkan game-game menarik untuk Anda.</p>
+                    <h3>No Games Yet</h3>
+                    <p>We are developing exciting games for you.</p>
                 </div>
             `;
             return;
@@ -306,10 +306,10 @@ class GamesLoader {
                     </div>
                     <div class="game-actions">
                         ${game.playLink && game.playLink !== '#' ? 
-                            `<a href="${game.playLink}" target="_blank" class="btn btn-play">Mainkan</a>` :
-                            `<span class="btn" style="opacity: 0.5; cursor: not-allowed;">Segera Hadir</span>`
+                            `<a href="${game.playLink}" target="_blank" class="btn btn-play">Play</a>` :
+                            `<span class="btn" style="opacity: 0.5; cursor: not-allowed;">Coming Soon</span>`
                         }
-                        <a href="#" class="btn btn-details">Detail</a>
+                        <a href="#" class="btn btn-details">Details</a>
                     </div>
                 </div>
             </div>
@@ -318,7 +318,7 @@ class GamesLoader {
 
     formatDate(dateStr) {
         const date = new Date(dateStr);
-        return date.toLocaleDateString('id-ID', {
+        return date.toLocaleDateString('en-US', {
             year: 'numeric',
             month: 'long',
             day: 'numeric'
