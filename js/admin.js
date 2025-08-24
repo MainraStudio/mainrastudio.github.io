@@ -60,23 +60,10 @@ class GameManager {
     handleFormSubmit(e) {
         e.preventDefault();
 
-        // Parse screenshots
-        const screenshotsText = document.getElementById('game-screenshots').value;
-        const screenshots = screenshotsText ? 
-            screenshotsText.split(',').map(url => url.trim()).filter(url => url) : 
-            [document.getElementById('game-image').value];
-
         const formData = {
             title: document.getElementById('game-title').value,
-            description: document.getElementById('game-description').value,
             image: document.getElementById('game-image').value,
-            screenshots: screenshots,
             playLink: document.getElementById('game-play-link').value || '#',
-            category: 'Game', // Default category since removed from form
-            status: document.getElementById('game-status').value,
-            releaseDate: new Date().toISOString().split('T')[0], // Default to today
-            platform: document.getElementById('game-platform').value,
-            rating: '4.5', // Default rating since removed from form
             featured: document.getElementById('game-featured').checked
         };
 
@@ -127,12 +114,8 @@ class GameManager {
 
             document.getElementById('game-id').value = game.id;
             document.getElementById('game-title').value = game.title;
-            document.getElementById('game-description').value = game.description;
             document.getElementById('game-image').value = game.image;
             document.getElementById('game-play-link').value = game.playLink;
-            document.getElementById('game-status').value = game.status;
-            document.getElementById('game-platform').value = game.platform || '';
-            document.getElementById('game-screenshots').value = game.screenshots ? game.screenshots.join(', ') : '';
             document.getElementById('game-featured').checked = game.featured || false;
 
             document.getElementById('form-title').innerHTML = '<i class="fas fa-edit"></i> Edit Game';
